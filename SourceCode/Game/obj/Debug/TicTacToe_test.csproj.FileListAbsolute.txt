@@ -1,0 +1,6 @@
+C:\TicTacToe\TicTacToe_test.pdb
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\TicTacToe_test\obj\Debug\TicTacToe_test.csproj.CoreCompileInputs.cache
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\TicTacToe_test\obj\Debug\TicTacToe_test.pdb
+C:\TicTacToe\TicTacToe_test.dll.config
+C:\TicTacToe\TicTacToe_test.dll
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\TicTacToe_test\obj\Debug\TicTacToe_test.dll

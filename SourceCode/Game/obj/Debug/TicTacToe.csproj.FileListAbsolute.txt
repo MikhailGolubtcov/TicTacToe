@@ -1,0 +1,13 @@
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\TicTacToe_test\obj\Debug\TicTacToe.csprojResolveAssemblyReference.cache
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\TicTacToe_test\obj\Debug\TicTacToe.csproj.CoreCompileInputs.cache
+C:\TicTacToe\EPAM.TicTacToe.MainProgram.exe.config
+C:\TicTacToe\EPAM.TicTacToe.MainProgram.exe
+C:\TicTacToe\EPAM.TicTacToe.MainProgram.pdb
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\TicTacToe_test\obj\Debug\EPAM.TicTacToe.MainProgram.exe
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\TicTacToe_test\obj\Debug\EPAM.TicTacToe.MainProgram.pdb
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\TicTacToe_test\obj\Debug\App.g.cs
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\TicTacToe_test\obj\Debug\EPAM.TicTacToe.MainProgram_MarkupCompile.cache
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\TicTacToe_test\obj\Debug\UIParameters.g.cs
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\TicTacToe_test\obj\Debug\EPAM.TicTacToe.MainProgram_MarkupCompile.lref
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\TicTacToe_test\obj\Debug\UIParameters.baml
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\TicTacToe_test\obj\Debug\EPAM.TicTacToe.MainProgram.g.resources

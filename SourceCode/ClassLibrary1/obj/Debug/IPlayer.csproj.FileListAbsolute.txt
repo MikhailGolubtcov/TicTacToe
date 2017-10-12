@@ -1,0 +1,6 @@
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\ClassLibrary1\obj\Debug\IPlayer.csproj.CoreCompileInputs.cache
+C:\TicTacToe\EPAM.TicTacToe.IPlayer.dll
+C:\TicTacToe\EPAM.TicTacToe.IPlayer.pdb
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\ClassLibrary1\obj\Debug\EPAM.TicTacToe.IPlayer.dll
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\ClassLibrary1\obj\Debug\EPAM.TicTacToe.IPlayer.pdb
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\ClassLibrary1\obj\Debug\IPlayer.csprojResolveAssemblyReference.cache

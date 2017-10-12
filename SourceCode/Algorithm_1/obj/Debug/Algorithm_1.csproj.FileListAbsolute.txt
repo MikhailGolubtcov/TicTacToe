@@ -1,0 +1,12 @@
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\Algorithm_1\bin\Debug\EPAM.TicTacToe.Algorithm_1.dll
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\Algorithm_1\bin\Debug\EPAM.TicTacToe.Algorithm_1.pdb
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\Algorithm_1\bin\Debug\EPAM.TicTacToe.IPlayer.dll
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\Algorithm_1\bin\Debug\EPAM.TicTacToe.IPlayer.pdb
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\Algorithm_1\obj\Debug\Algorithm_1.csproj.CoreCompileInputs.cache
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\Algorithm_1\obj\Debug\EPAM.TicTacToe.Algorithm_1.dll
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\Algorithm_1\obj\Debug\EPAM.TicTacToe.Algorithm_1.pdb
+C:\TicTacToe\EPAM.TicTacToe.Algorithm_1.dll
+C:\TicTacToe\EPAM.TicTacToe.Algorithm_1.pdb
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\Algorithm_1\obj\Debug\Algorithm_1.csprojResolveAssemblyReference.cache
+C:\TicTacToe\Players\EPAM.TicTacToe.Algorithm_1.dll
+C:\TicTacToe\Players\EPAM.TicTacToe.Algorithm_1.pdb

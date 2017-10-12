@@ -1,0 +1,6 @@
+C:\TicTacToe\Players\EPAM.TicTacToe.Algorithm_2.dll
+C:\TicTacToe\Players\EPAM.TicTacToe.Algorithm_2.pdb
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\Algorithm_2\obj\Debug\Algorithm_2.csproj.CoreCompileInputs.cache
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\Algorithm_2\obj\Debug\EPAM.TicTacToe.Algorithm_2.dll
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\Algorithm_2\obj\Debug\EPAM.TicTacToe.Algorithm_2.pdb
+C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\Algorithm_2\obj\Debug\Algorithm_2.csprojResolveAssemblyReference.cache
