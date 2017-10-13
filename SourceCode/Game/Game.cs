@@ -181,10 +181,6 @@ namespace EPAM.TicTacToe
                 }
             }
             while (!isVictory);
-
-            System.Console.WriteLine(playingPairOfPlayers[0].PlayerId.ToString() + " - " + playingPairOfPlayers[0].AlgorithmClass.ToString() + " - " + (playingPairOfPlayers[0]).playerCellState.ToString() + " is winner? " + playingPairOfPlayers[0].isWinner + " Result: " + playingPairOfPlayers[0].battleResult);
-            System.Console.WriteLine(playingPairOfPlayers[1].PlayerId.ToString() + " - " + playingPairOfPlayers[1].AlgorithmClass.ToString() + " - " + (playingPairOfPlayers[1]).playerCellState.ToString() + " is winner? " + (playingPairOfPlayers[1]).isWinner + " Result: " + playingPairOfPlayers[1].battleResult);
-            System.Console.WriteLine();
         }
 
         internal void RunGame(bool isVersusHuman, string teamName, string playersDllPath, string sqlServerName, string dbLogin, string dbPassword, List<BattleParams> listBattleParams)
@@ -221,7 +217,6 @@ namespace EPAM.TicTacToe
                     playersTournamentList.Add((Player)player.PlayerId1.Clone());
                     playersTournamentList.Add((Player)player.PlayerId2.Clone());
                     k += 1;
-
                 }
             }
 
@@ -231,10 +226,7 @@ namespace EPAM.TicTacToe
                 playingPairOfPlayers.AddRange(playersTournamentList.Where(CurrentPlayingPairId => CurrentPlayingPairId.PlayingPairId == n));
 
                 RunBattle(playingPairOfPlayers, playingPairOfPlayers[0].QtyCellsForWin, playingPairOfPlayers[0].MaxLengthFieldOfBattlefield);
-                //}
-
             }
-
 
             PublishGameResults(sqlServerName, dbLogin, dbPassword);
         }
