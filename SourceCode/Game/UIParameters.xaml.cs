@@ -17,16 +17,14 @@ namespace EPAM.TicTacToe
 {
     public partial class UIParameters : Window
     {
-        public enum GameType { AlgorithmsTournament = 0, HumanVsAlgorihm = 1};
+        public enum GameType { AlgorithmsTournament = 0, HumanVsAlgorihm = 1 };
+        internal List<BattleParams> battleParams;
         public UIParameters()
         {
-
             InitializeComponent();
 
-            var battleParams = new List<BattleParams>();
-            battleParams.Add(new BattleParams(3, 20, TimeSpan.FromSeconds(100), 10));
-            battleParams.Add(new BattleParams(5, 30, TimeSpan.FromSeconds(300), 20));
-            battleParams.Add(new BattleParams(6, 70, TimeSpan.FromSeconds(600), 50));
+            battleParams = new List<BattleParams>();
+            battleParams.Add(new BattleParams(3, 30, TimeSpan.FromSeconds(60), 20));
             dataGrid1.ItemsSource = battleParams;
             GameTypesComboBox.ItemsSource = Enum.GetValues(typeof(GameType));
             TeamList.ItemsSource = "Load team names".Split(',').ToList<string>();
@@ -48,9 +46,28 @@ namespace EPAM.TicTacToe
             ((Button)sender).IsEnabled = true;
         }
 
-        private void PlayerDllPath_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        //private bool ValidateParams()
+        //{
+        //    bool isValid = true;
 
+
+
+        //    return isValid;
+        //}
+
+        internal void AddRowToBattleParams(object sender, RoutedEventArgs e)
+        {
+            battleParams.Add(new BattleParams(0, 0, TimeSpan.FromSeconds(0), 0));
+            dataGrid1.Items.Refresh();
+        }
+
+        internal void RemoveRowFromBattleParams(object sender, RoutedEventArgs e)
+        {
+            if (battleParams.Count - 1 > 0)
+            {
+                battleParams.RemoveAt(battleParams.Count - 1);
+                dataGrid1.Items.Refresh();
+            }
         }
     }
 }

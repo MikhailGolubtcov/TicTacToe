@@ -235,7 +235,7 @@ namespace EPAM.TicTacToe
         {
             string insertStatement = "insert into dbo.Results(PlayingPairId, PlayerId, ClassName, TeamName, IsHuman, IsWinner, RemainingTimeForGame, PlayerCellState, BattleResult) values(@PlayingPairId, @PlayerId, @ClassName, @TeamName, @IsHuman, @IsWinner, @RemainingTimeForGame, @PlayerCellState, @BattleResult)";
             string truncateStatement = "truncate table dbo.Results";
-            using (SqlConnection sqlConn = new SqlConnection("Data Source=" + sqlServerName + ";Initial Catalog=TicTacToe;User id=" + dbLogin + ";Password=" + dbPassword))
+            using (SqlConnection sqlConn = new SqlConnection("Data Source=" + sqlServerName + ";Initial Catalog=TicTacToe;Integrated Security=SSPI;"))
             {
                 using (SqlCommand sqlCommand = new SqlCommand(truncateStatement, sqlConn))
                 {
