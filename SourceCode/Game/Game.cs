@@ -17,6 +17,7 @@ namespace EPAM.TicTacToe
     {
         private List<Player> allPlayersList;
         private List<Player> playersTournamentList = new List<Player>();
+        private int currentQtyEmptyCellsOnBattleField;
 
         private CellState.cellState[,] CreateBattleField(byte maxLengthFieldOfBattlefield)
         {
@@ -24,7 +25,7 @@ namespace EPAM.TicTacToe
             return battleField;
         }
 
-        private bool SetPointOnBattleField(CellCoordinates pointOnBattleField, Player algorithm, CellState.cellState[,] battleField, bool isVictory, int currentQtyEmptyCellsOnBattleField)
+        private bool SetPointOnBattleField(CellCoordinates pointOnBattleField, Player algorithm, CellState.cellState[,] battleField, bool isVictory)
         {
             bool isPointSet;
             //Setting point based on xy-coordinates
@@ -122,7 +123,6 @@ namespace EPAM.TicTacToe
             bool isVictory = false;
             string battleResult = "";
 
-            int currentQtyEmptyCellsOnBattleField;
             TimeSpan timeBeforePlayerMove;
             currentQtyEmptyCellsOnBattleField = maxLengthFieldOfBattlefield * maxLengthFieldOfBattlefield;
             sbyte algorithmIndex = 1;
@@ -138,7 +138,7 @@ namespace EPAM.TicTacToe
                 nextMove = (playingPairOfPlayers[algorithmIndex].initializedPlayer).NextMove(battleField, qtyCellsForWin, playingPairOfPlayers[algorithmIndex].IsHuman, playingPairOfPlayers[algorithmIndex].RemainingTimeForGame, playingPairOfPlayers[algorithmIndex].RemainingQtyMovesForGame);
                 playingPairOfPlayers[algorithmIndex].RemainingTimeForGame -= DateTime.Now.TimeOfDay - timeBeforePlayerMove;
 
-                bool isPointSet = SetPointOnBattleField(nextMove, playingPairOfPlayers[algorithmIndex], battleField, isVictory, currentQtyEmptyCellsOnBattleField);
+                bool isPointSet = SetPointOnBattleField(nextMove, playingPairOfPlayers[algorithmIndex], battleField, isVictory);
 
                 //If player exceeds amount of limit time for whole game, he lost
                 if (playingPairOfPlayers[algorithmIndex].RemainingTimeForGame < TimeSpan.FromSeconds(0))

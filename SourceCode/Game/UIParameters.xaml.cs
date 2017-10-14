@@ -24,7 +24,7 @@ namespace EPAM.TicTacToe
             InitializeComponent();
 
             battleParams = new List<BattleParams>();
-            battleParams.Add(new BattleParams(3, 30, TimeSpan.FromSeconds(60), 20));
+            battleParams.Add(new BattleParams(3, 3, TimeSpan.FromSeconds(60), 20));
             dataGrid1.ItemsSource = battleParams;
             GameTypesComboBox.ItemsSource = Enum.GetValues(typeof(GameType));
             TeamList.ItemsSource = "Load team names".Split(',').ToList<string>();
