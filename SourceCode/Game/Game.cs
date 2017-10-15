@@ -66,7 +66,11 @@ namespace EPAM.TicTacToe
                         && currentCellCoordinate % 1000 <= maxCellCoordinate % 1000
                         && (CellState.cellState)battleField.GetValue(currentCellCoordinate / 1000, currentCellCoordinate % 1000) == (CellState.cellState)algorithm.playerCellState)
                 {
-                    currentQtyOfVictoryCells += 1;
+                    if (Math.Abs(currentCellCoordinate / 1000 - maxCellCoordinate / 1000) > 1
+                        || Math.Abs(currentCellCoordinate % 1000 - maxCellCoordinate % 1000) > 1)
+                    {
+                        currentQtyOfVictoryCells += 1;
+                    }
 
                     currentCellCoordinate = AddNumToCoordinates(currentCellCoordinate, coordinateNumAdd, maxLengthFieldOfBattlefield);
 

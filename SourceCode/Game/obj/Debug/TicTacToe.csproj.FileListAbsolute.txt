@@ -25,3 +25,4 @@ C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\obj\Debug\EPAM.Ti
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\obj\Debug\TicTacToe.csproj.CoreCompileInputs.cache
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\obj\Debug\EPAM.TicTacToe.MainProgram.exe
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\obj\Debug\EPAM.TicTacToe.MainProgram.pdb
+C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\obj\Debug\TicTacToe.csprojResolveAssemblyReference.cache

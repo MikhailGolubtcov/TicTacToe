@@ -28,10 +28,10 @@
             SelectedIndex="0" Grid.Column="1" />
         <Button Content="Start game" HorizontalAlignment="Left" Margin="370.259,137,-10.4,-130.4" VerticalAlignment="Top" Width="75" Name="ButtonStartGame" Click="StartGame" RenderTransformOrigin="0.433,1.37" Grid.Column="1"/>
         <Button Content="Load team names" HorizontalAlignment="Left" Margin="19.259,-93,0,0" VerticalAlignment="Top" Width="Auto" Name="ButtonLoadAlgorithmsAssembly" Click="LoadAlgorithmsAssembly" RenderTransformOrigin="0.433,1.37" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,-110,0,0" TextWrapping="Wrap" Text="Insert path for algorithms dll" VerticalAlignment="Top" Width="Auto" MinWidth="30" MaxWidth="200" Name="PlayerDllPath"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,-110,0,0" TextWrapping="Wrap" Text="C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Algorithms" VerticalAlignment="Top" Width="Auto" MinWidth="30" MaxWidth="200" Name="PlayerDllPath"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="10,-50,0,0" TextWrapping="Wrap" Text="Insert login for DB" VerticalAlignment="Top" Width="Auto" MinWidth="30" MaxWidth="150" Name="dbLogin" Visibility="Hidden"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="10,-20,0,0" TextWrapping="Wrap" Text="Insert password for DB" VerticalAlignment="Top" Width="Auto" MinWidth="30" MaxWidth="150" Name="dbPassword" Visibility="Hidden"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,-80,0,0" TextWrapping="Wrap" Text="Insert sql server name" VerticalAlignment="Top" Width="Auto" MinWidth="30" MaxWidth="200" x:Name="sqlServerName"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,-80,0,0" TextWrapping="Wrap" Text="localhost" VerticalAlignment="Top" Width="Auto" MinWidth="30" MaxWidth="200" x:Name="sqlServerName"/>
         <Button Content="AddRow" HorizontalAlignment="Left" Margin="10,-15,0,0" VerticalAlignment="Top" Width="Auto" x:Name="ButtonAddRowToBattleParams" Click="AddRowToBattleParams" RenderTransformOrigin="0.433,1.37"/>
         <Button Content="RemoveRow" HorizontalAlignment="Left" Margin="80,-15,0,0" VerticalAlignment="Top" Width="Auto" x:Name="ButtonRemoveRowFromBattleParams" Click="RemoveRowFromBattleParams" RenderTransformOrigin="0.433,1.37"/>
     </Grid>
