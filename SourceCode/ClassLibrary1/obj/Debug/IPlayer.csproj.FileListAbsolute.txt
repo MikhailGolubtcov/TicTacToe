@@ -9,4 +9,3 @@ C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\bin\Debug\EPAM.Ti
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\ClassLibrary1\obj\Debug\IPlayer.csproj.CoreCompileInputs.cache
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\ClassLibrary1\obj\Debug\EPAM.TicTacToe.IPlayer.dll
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\ClassLibrary1\obj\Debug\EPAM.TicTacToe.IPlayer.pdb
-C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\ClassLibrary1\obj\Debug\IPlayer.csprojResolveAssemblyReference.cache
