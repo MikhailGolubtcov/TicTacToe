@@ -50,6 +50,7 @@ namespace EPAM.TicTacToe
             int[] correctDifferenceCoordinates = { 1, maxLengthFieldOfBattlefield - 1, maxLengthFieldOfBattlefield, maxLengthFieldOfBattlefield + 1 };
             int initialCellCoordinate = cellCoordinates.X * 1000 + cellCoordinates.Y;
             int currentCellCoordinate;
+            int prevCellCoordinate;
 
             byte currentQtyOfVictoryCells;
             bool isOppositeDirectionSearched;
@@ -58,6 +59,7 @@ namespace EPAM.TicTacToe
             {
                 sbyte coordinateNumAdd = coordNumAdd;
                 currentCellCoordinate = initialCellCoordinate;
+                prevCellCoordinate = initialCellCoordinate;
                 currentQtyOfVictoryCells = 0;
                 isOppositeDirectionSearched = false;
 
@@ -66,12 +68,13 @@ namespace EPAM.TicTacToe
                         && currentCellCoordinate % 1000 <= maxCellCoordinate % 1000
                         && (CellState.cellState)battleField.GetValue(currentCellCoordinate / 1000, currentCellCoordinate % 1000) == (CellState.cellState)algorithm.playerCellState)
                 {
-                    if (Math.Abs(currentCellCoordinate / 1000 - maxCellCoordinate / 1000) > 1
-                        || Math.Abs(currentCellCoordinate % 1000 - maxCellCoordinate % 1000) > 1)
+                    if (Math.Abs(currentCellCoordinate / 1000 - prevCellCoordinate / 1000) < 2
+                        && Math.Abs(currentCellCoordinate % 1000 - prevCellCoordinate % 1000) < 2)
                     {
                         currentQtyOfVictoryCells += 1;
                     }
 
+                    prevCellCoordinate = currentCellCoordinate;
                     currentCellCoordinate = AddNumToCoordinates(currentCellCoordinate, coordinateNumAdd, maxLengthFieldOfBattlefield);
 
                     if (currentCellCoordinate < 0
@@ -82,6 +85,7 @@ namespace EPAM.TicTacToe
                         {
                             coordinateNumAdd = (sbyte)(0 - coordNumAdd);
                             currentCellCoordinate = AddNumToCoordinates(initialCellCoordinate, coordinateNumAdd, maxLengthFieldOfBattlefield);
+                            prevCellCoordinate = initialCellCoordinate;
                             isOppositeDirectionSearched = true;
                         }
                     }
@@ -90,6 +94,7 @@ namespace EPAM.TicTacToe
                     {
                         coordinateNumAdd = (sbyte)(0 - coordNumAdd);
                         currentCellCoordinate = AddNumToCoordinates(initialCellCoordinate, coordinateNumAdd, maxLengthFieldOfBattlefield);
+                        prevCellCoordinate = initialCellCoordinate;
                         isOppositeDirectionSearched = true;
                     }
                 }
@@ -185,6 +190,16 @@ namespace EPAM.TicTacToe
                 }
             }
             while (!isVictory);
+
+            //Refreshing UI after victory
+            if (playingPairOfPlayers[algorithmIndex].IsHuman)
+            {
+                playingPairOfPlayers[algorithmIndex].initializedPlayer.RefreshUI(battleField);
+            }
+            else
+            {
+                playingPairOfPlayers[(SByte)((algorithmIndex - 1) * (-1))].initializedPlayer.RefreshUI(battleField);
+            }
         }
 
         internal void RunGame(bool isVersusHuman, string teamName, string playersDllPath, string sqlServerName, string dbLogin, string dbPassword, List<BattleParams> listBattleParams)

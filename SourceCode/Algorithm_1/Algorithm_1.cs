@@ -40,5 +40,10 @@ namespace EPAM.TicTacToe
 
             return nextMove;
         }
+
+        public void RefreshUI(CellState.cellState[,] CurrentState)
+        {
+
+        }
     }
 }

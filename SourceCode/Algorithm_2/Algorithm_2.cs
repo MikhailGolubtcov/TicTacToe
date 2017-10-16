@@ -19,8 +19,8 @@ namespace EPAM.TicTacToe
             }
             else if (currentState[2, 1] == CellState.cellState.Empty)
             {
-                nextMove.X = 2;
-                nextMove.Y = 1;
+                nextMove.X = 0;
+                nextMove.Y = 2;
             }
             //else if (currentState[2, 2] == CellState.cellState.Empty)
             //{
@@ -33,6 +33,11 @@ namespace EPAM.TicTacToe
             //    nextMove.Y = 1;
             //}
             return nextMove;
+        }
+
+        public void RefreshUI(CellState.cellState[,] CurrentState)
+        {
+
         }
     }
 }

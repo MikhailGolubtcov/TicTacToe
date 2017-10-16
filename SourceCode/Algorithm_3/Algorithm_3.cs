@@ -7,23 +7,28 @@ namespace EPAM.TicTacToe
         public CellCoordinates NextMove(CellState.cellState[,] currentState, byte qtyCellsForWin, bool isVersusHuman, TimeSpan remainingTimeForGame, int remainingQtyMovesForGame)
         {
             CellCoordinates nextMove = new CellCoordinates();
-            if (currentState[10, 10] == CellState.cellState.Empty)
+            if (currentState[1, 0] == CellState.cellState.Empty)
             {
-                nextMove.X = 10;
-                nextMove.Y = 10;
+                nextMove.X = 1;
+                nextMove.Y = 0;
             }
-            else if (currentState[11, 6] == CellState.cellState.Empty)
+            else if (currentState[1, 1] == CellState.cellState.Empty)
             {
-                nextMove.X = 11;
-                nextMove.Y = 6;
+                nextMove.X = 1;
+                nextMove.Y = 1;
             }
-            else if (currentState[12, 13] == CellState.cellState.Empty)
+            else if (currentState[1, 2] == CellState.cellState.Empty)
             {
-                nextMove.X = 12;
-                nextMove.Y = 13;
+                nextMove.X = 1;
+                nextMove.Y = 2;
             }
 
             return nextMove;
+        }
+
+        public void RefreshUI(CellState.cellState[,] CurrentState)
+        {
+
         }
     }
 }

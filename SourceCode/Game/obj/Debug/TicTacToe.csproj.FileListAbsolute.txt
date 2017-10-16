@@ -14,7 +14,6 @@ C:\Users\Mikhail_Golubtcov\source\repos\TicTacToe_test\TicTacToe_test\obj\Debug\
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\bin\Debug\EPAM.TicTacToe.MainProgram.exe.config
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\bin\Debug\EPAM.TicTacToe.MainProgram.exe
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\bin\Debug\EPAM.TicTacToe.MainProgram.pdb
-C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\bin\Debug\EPAM.TicTacToe.IPlayer.dll
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\bin\Debug\EPAM.TicTacToe.IPlayer.pdb
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\obj\Debug\UIParameters.g.cs
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\obj\Debug\App.g.cs
