@@ -27,3 +27,4 @@ C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\obj\Debug\TicTacT
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\obj\Debug\EPAM.TicTacToe.MainProgram_Content.g.cs
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\bin\Debug\TicTacToeDB.mdf
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\bin\Debug\TicTacToeDB_log.ldf
+C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Game\bin\Debug\EPAM.TicTacToe.IPlayer.pdb
