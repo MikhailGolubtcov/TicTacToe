@@ -254,7 +254,7 @@ namespace EPAM.TicTacToe
         {
             string insertStatement = "insert into dbo.Results(PlayingPairId, PlayerId, ClassName, TeamName, IsHuman, IsWinner, RemainingTimeForGame, PlayerCellState, BattleResult) values(@PlayingPairId, @PlayerId, @ClassName, @TeamName, @IsHuman, @IsWinner, @RemainingTimeForGame, @PlayerCellState, @BattleResult)";
             string truncateStatement = "truncate table dbo.Results";
-            using (SqlConnection sqlConn = new SqlConnection("Data Source=" + sqlServerName + ";Initial Catalog=TicTacToe;Integrated Security=SSPI;"))
+            using (SqlConnection sqlConn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\TicTacToeDB.mdf;Integrated Security=True"))
             {
                 using (SqlCommand sqlCommand = new SqlCommand(truncateStatement, sqlConn))
                 {

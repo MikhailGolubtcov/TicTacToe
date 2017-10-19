@@ -9,4 +9,3 @@ C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Algorithms\EPAM.TicTac
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Algorithm_3\obj\Debug\Algorithm_3.csproj.CoreCompileInputs.cache
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Algorithm_3\obj\Debug\EPAM.TicTacToe.Algorithm_3.dll
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Algorithm_3\obj\Debug\EPAM.TicTacToe.Algorithm_3.pdb
-C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Algorithm_3\obj\Debug\Algorithm_3.csprojResolveAssemblyReference.cache
