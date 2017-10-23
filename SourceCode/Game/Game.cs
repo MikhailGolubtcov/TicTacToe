@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows;
+using System.Reflection;
 
 
 
@@ -18,6 +19,7 @@ namespace EPAM.TicTacToe
         private List<Player> allPlayersList;
         private List<Player> playersTournamentList = new List<Player>();
         private int currentQtyEmptyCellsOnBattleField;
+        private bool hasExceptionsOccured;
 
         private CellState.cellState[,] CreateBattleField(byte maxLengthFieldOfBattlefield)
         {
@@ -25,24 +27,29 @@ namespace EPAM.TicTacToe
             return battleField;
         }
 
-        private bool SetPointOnBattleField(CellCoordinates pointOnBattleField, Player algorithm, CellState.cellState[,] battleField, bool isVictory)
+        //Setting point on battlefield based on xy-coordinates
+        private string SetPointOnBattleField(CellCoordinates pointOnBattleField, Player algorithm, CellState.cellState[,] battleField, bool isVictory)
         {
-            bool isPointSet;
-            //Setting point based on xy-coordinates
-            if (battleField[pointOnBattleField.X, pointOnBattleField.Y] == CellState.cellState.Empty)
+            string settingPointResult = "";
+            try
             {
-                battleField[pointOnBattleField.X, pointOnBattleField.Y] = (CellState.cellState)algorithm.playerCellState;
-                isPointSet = true;
-                currentQtyEmptyCellsOnBattleField -= 1;
-                algorithm.RemainingQtyMovesForGame -= 1;
+                if (battleField[pointOnBattleField.X, pointOnBattleField.Y] == CellState.cellState.Empty)
+                {
+                    battleField[pointOnBattleField.X, pointOnBattleField.Y] = (CellState.cellState)algorithm.playerCellState;
+                    currentQtyEmptyCellsOnBattleField -= 1;
+                }
+                else
+                {
+                    settingPointResult = "Non-empty cell";
+                }
             }
-            else
+            catch (IndexOutOfRangeException e)
             {
-                isVictory = true;
-                isPointSet = false;
+                PublishGameExceptions("Team \"" + algorithm.TeamName + "\" has returned coordinates outside the bound of battlefield.", e.ToString());
+                settingPointResult = "Point is outside the bound";
             }
 
-            return isPointSet;
+            return settingPointResult;
         }
 
         private bool CheckVictory(Player algorithm, CellCoordinates cellCoordinates, int maxCellCoordinate, byte qtyCellsForWin, byte maxLengthFieldOfBattlefield, CellState.cellState[,] battleField, bool isVictory, string battleResult)
@@ -63,25 +70,36 @@ namespace EPAM.TicTacToe
                 currentQtyOfVictoryCells = 0;
                 isOppositeDirectionSearched = false;
 
-                while (currentCellCoordinate >= 0
-                        && currentCellCoordinate / 1000 <= maxCellCoordinate / 1000
-                        && currentCellCoordinate % 1000 <= maxCellCoordinate % 1000
-                        && (CellState.cellState)battleField.GetValue(currentCellCoordinate / 1000, currentCellCoordinate % 1000) == (CellState.cellState)algorithm.playerCellState)
+                try
                 {
-                    if (Math.Abs(currentCellCoordinate / 1000 - prevCellCoordinate / 1000) < 2
-                        && Math.Abs(currentCellCoordinate % 1000 - prevCellCoordinate % 1000) < 2)
+                    while (currentCellCoordinate >= 0
+                            && currentCellCoordinate / 1000 <= maxCellCoordinate / 1000
+                            && currentCellCoordinate % 1000 <= maxCellCoordinate % 1000
+                            && (CellState.cellState)battleField.GetValue(currentCellCoordinate / 1000, currentCellCoordinate % 1000) == (CellState.cellState)algorithm.playerCellState)
                     {
-                        currentQtyOfVictoryCells += 1;
-                    }
+                        if (Math.Abs(currentCellCoordinate / 1000 - prevCellCoordinate / 1000) < 2
+                            && Math.Abs(currentCellCoordinate % 1000 - prevCellCoordinate % 1000) < 2)
+                        {
+                            currentQtyOfVictoryCells += 1;
+                        }
 
-                    prevCellCoordinate = currentCellCoordinate;
-                    currentCellCoordinate = AddNumToCoordinates(currentCellCoordinate, coordinateNumAdd, maxLengthFieldOfBattlefield);
+                        prevCellCoordinate = currentCellCoordinate;
+                        currentCellCoordinate = AddNumToCoordinates(currentCellCoordinate, coordinateNumAdd, maxLengthFieldOfBattlefield);
 
-                    if (currentCellCoordinate < 0
-                        || currentCellCoordinate / 1000 > maxCellCoordinate / 1000
-                        || currentCellCoordinate % 1000 > maxCellCoordinate % 1000)
-                    {
-                        if (!isOppositeDirectionSearched)
+                        if (currentCellCoordinate < 0
+                            || currentCellCoordinate / 1000 > maxCellCoordinate / 1000
+                            || currentCellCoordinate % 1000 > maxCellCoordinate % 1000)
+                        {
+                            if (!isOppositeDirectionSearched)
+                            {
+                                coordinateNumAdd = (sbyte)(0 - coordNumAdd);
+                                currentCellCoordinate = AddNumToCoordinates(initialCellCoordinate, coordinateNumAdd, maxLengthFieldOfBattlefield);
+                                prevCellCoordinate = initialCellCoordinate;
+                                isOppositeDirectionSearched = true;
+                            }
+                        }
+                        else if ((CellState.cellState)battleField.GetValue(currentCellCoordinate / 1000, currentCellCoordinate % 1000) != (CellState.cellState)algorithm.playerCellState
+                                    && !isOppositeDirectionSearched)
                         {
                             coordinateNumAdd = (sbyte)(0 - coordNumAdd);
                             currentCellCoordinate = AddNumToCoordinates(initialCellCoordinate, coordinateNumAdd, maxLengthFieldOfBattlefield);
@@ -89,14 +107,10 @@ namespace EPAM.TicTacToe
                             isOppositeDirectionSearched = true;
                         }
                     }
-                    else if ((CellState.cellState)battleField.GetValue(currentCellCoordinate / 1000, currentCellCoordinate % 1000) != (CellState.cellState)algorithm.playerCellState
-                                && !isOppositeDirectionSearched)
-                    {
-                        coordinateNumAdd = (sbyte)(0 - coordNumAdd);
-                        currentCellCoordinate = AddNumToCoordinates(initialCellCoordinate, coordinateNumAdd, maxLengthFieldOfBattlefield);
-                        prevCellCoordinate = initialCellCoordinate;
-                        isOppositeDirectionSearched = true;
-                    }
+                }
+                catch (IndexOutOfRangeException e)
+                {
+                    PublishGameExceptions("CheckVictory engine has returned coordinates outside the bound of battlefield.", e.ToString());
                 }
 
                 if (currentQtyOfVictoryCells >= qtyCellsForWin)
@@ -131,23 +145,36 @@ namespace EPAM.TicTacToe
             CellState.cellState[,] battleField;
             bool isVictory = false;
             string battleResult = "";
+            bool hasAlgorithmError;
 
             TimeSpan timeBeforePlayerMove;
             currentQtyEmptyCellsOnBattleField = maxLengthFieldOfBattlefield * maxLengthFieldOfBattlefield;
             sbyte algorithmIndex = 1;
-            CellCoordinates nextMove;
+            CellCoordinates nextMove = new CellCoordinates();
             int maxCellCoordinate = (maxLengthFieldOfBattlefield - 1) * 1000 + (maxLengthFieldOfBattlefield - 1);
             battleField = CreateBattleField(maxLengthFieldOfBattlefield);
 
             do
             {
                 algorithmIndex = (SByte)((algorithmIndex - 1) * (-1));
+                hasAlgorithmError = false;
+                string settingPointResult = "";
 
                 timeBeforePlayerMove = DateTime.Now.TimeOfDay;
-                nextMove = (playingPairOfPlayers[algorithmIndex].initializedPlayer).NextMove(battleField, qtyCellsForWin, playingPairOfPlayers[algorithmIndex].IsHuman, playingPairOfPlayers[algorithmIndex].RemainingTimeForGame, playingPairOfPlayers[algorithmIndex].RemainingQtyMovesForGame);
+
+                try
+                {
+                    nextMove = playingPairOfPlayers[algorithmIndex].initializedPlayer.NextMove(battleField, qtyCellsForWin, playingPairOfPlayers[algorithmIndex].IsHuman, playingPairOfPlayers[algorithmIndex].RemainingTimeForGame);
+                }
+                catch (Exception e)
+                {
+                    PublishGameExceptions("Exception in algorithm's team " + playingPairOfPlayers[algorithmIndex].TeamName + " - nextMove method.", e.ToString());
+                    hasAlgorithmError = true;
+                }
+
                 playingPairOfPlayers[algorithmIndex].RemainingTimeForGame -= DateTime.Now.TimeOfDay - timeBeforePlayerMove;
 
-                bool isPointSet = SetPointOnBattleField(nextMove, playingPairOfPlayers[algorithmIndex], battleField, isVictory);
+                settingPointResult = SetPointOnBattleField(nextMove, playingPairOfPlayers[algorithmIndex], battleField, isVictory);
 
                 //If player exceeds amount of limit time for whole game, he lost
                 if (playingPairOfPlayers[algorithmIndex].RemainingTimeForGame < TimeSpan.FromSeconds(0))
@@ -157,16 +184,24 @@ namespace EPAM.TicTacToe
                     playingPairOfPlayers[algorithmIndex].battleResult = "Player has exceeded limit time for whole game";
                     playingPairOfPlayers[(SByte)((algorithmIndex - 1) * (-1))].battleResult = "Another player has exceeded limit time for whole game";
                 }
-                //If player exceeds amount of limit quantity of moves for whole game, he lost
-                if (playingPairOfPlayers[algorithmIndex].RemainingQtyMovesForGame < 0)
+                //If algorithm return point coordinates, which are outside the bound of the battlefield, he lost
+                else if (settingPointResult == "Point is outside the bound")
                 {
                     isVictory = true;
                     (playingPairOfPlayers[(SByte)((algorithmIndex - 1) * (-1))]).isWinner = true;
-                    playingPairOfPlayers[algorithmIndex].battleResult = "Player has exceeded limit of moves";
-                    playingPairOfPlayers[(SByte)((algorithmIndex - 1) * (-1))].battleResult = "Another player has exceeded limit of moves";
+                    playingPairOfPlayers[algorithmIndex].battleResult = "Algorithm has returned coordinates outside the bound of battlefield";
+                    playingPairOfPlayers[(SByte)((algorithmIndex - 1) * (-1))].battleResult = "Another algorithm has returned coordinates outside the bound of battlefield";
+                }
+                //If algorithm throws error, he lost
+                else if (hasAlgorithmError)
+                {
+                    isVictory = true;
+                    (playingPairOfPlayers[(SByte)((algorithmIndex - 1) * (-1))]).isWinner = true;
+                    playingPairOfPlayers[algorithmIndex].battleResult = "Algorithm has thrown exception";
+                    playingPairOfPlayers[(SByte)((algorithmIndex - 1) * (-1))].battleResult = "Another algorithm has thrown exception";
                 }
                 //If Player set point in non-empty cell, he lost
-                else if (!isPointSet)
+                else if (settingPointResult == "Non-empty cell")
                 {
                     isVictory = true;
                     playingPairOfPlayers[(SByte)((algorithmIndex - 1) * (-1))].isWinner = true;
@@ -192,18 +227,28 @@ namespace EPAM.TicTacToe
             while (!isVictory);
 
             //Refreshing UI after victory
-            if (playingPairOfPlayers[algorithmIndex].IsHuman)
+            try
             {
-                playingPairOfPlayers[algorithmIndex].initializedPlayer.RefreshUI(battleField);
+                if (playingPairOfPlayers[algorithmIndex].IsHuman)
+                {
+                    playingPairOfPlayers[algorithmIndex].initializedPlayer.RefreshUI(battleField);
+                }
+                else
+                {
+                    playingPairOfPlayers[(SByte)((algorithmIndex - 1) * (-1))].initializedPlayer.RefreshUI(battleField);
+                }
             }
-            else
+            catch (Exception e)
             {
-                playingPairOfPlayers[(SByte)((algorithmIndex - 1) * (-1))].initializedPlayer.RefreshUI(battleField);
+                PublishGameExceptions("Exception in algorithm's team " + playingPairOfPlayers[algorithmIndex].TeamName + " - RefreshUI method.", e.ToString());
             }
+
         }
 
-        internal void RunGame(bool isVersusHuman, string teamName, string playersDllPath, string sqlServerName, string dbLogin, string dbPassword, List<BattleParams> listBattleParams)
+        internal void RunGame(bool isVersusHuman, string teamName, string playersDllPath, List<BattleParams> listBattleParams)
         {
+            CleanGameLogs();
+
             Player players = new Player();
             allPlayersList = players.ReturnAllPlayers(isVersusHuman, teamName, playersDllPath);
 
@@ -211,25 +256,38 @@ namespace EPAM.TicTacToe
             var queryPlayers = allPlayersList.SelectMany(PlayerId => allPlayersList, (PlayerId1, PlayerId2) => new { PlayerId1, PlayerId2 }).Where(PlayerId => PlayerId.PlayerId1 != PlayerId.PlayerId2);
             foreach (var player in queryPlayers)
             {
-                var constructor1 = player.PlayerId1.AlgorithmClass.GetConstructor(new Type[0]);
-                dynamic initializedPlayer1 = constructor1.Invoke(new object[0]);
-                var constructor2 = player.PlayerId2.AlgorithmClass.GetConstructor(new Type[0]);
-                dynamic initializedPlayer2 = constructor2.Invoke(new object[0]);
+                try
+                {
+                    ConstructorInfo constructor1 = player.PlayerId1.AlgorithmClass.GetConstructor(new Type[0]);
+                    dynamic initializedPlayer1 = constructor1.Invoke(new object[0]);
+                    player.PlayerId1.initializedPlayer = initializedPlayer1;
+                }
+                catch (Exception e)
+                {
+                    PublishGameExceptions("Team's \"" + player.PlayerId1.TeamName + "\" algorithm has thrown exceptions while creating class object via constructor.", e.ToString());
+                }
 
-                player.PlayerId1.initializedPlayer = initializedPlayer1;
+                try
+                {
+                    ConstructorInfo constructor2 = player.PlayerId2.AlgorithmClass.GetConstructor(new Type[0]);
+                    dynamic initializedPlayer2 = constructor2.Invoke(new object[0]);
+                    player.PlayerId2.initializedPlayer = initializedPlayer2;
+                }
+                catch (Exception e)
+                {
+                    PublishGameExceptions("Team's \"" + player.PlayerId2.TeamName + "\" algorithm has thrown exceptions while creating class object via constructor.", e.ToString());
+                }
+
                 player.PlayerId1.playerCellState = PlayerCellState.playerCellState.X;
-                player.PlayerId2.initializedPlayer = initializedPlayer2;
                 player.PlayerId2.playerCellState = PlayerCellState.playerCellState.O;
 
                 foreach (BattleParams battleParams in listBattleParams)
                 {
                     player.PlayerId1.RemainingTimeForGame = battleParams.RemainingTimeForGame;
-                    player.PlayerId1.RemainingQtyMovesForGame = battleParams.RemainingQtyMovesForGame;
                     player.PlayerId1.QtyCellsForWin = battleParams.QtyCellsForWin;
                     player.PlayerId1.MaxLengthFieldOfBattlefield = battleParams.MaxLengthFieldOfBattlefield;
                     player.PlayerId1.PlayingPairId = k;
                     player.PlayerId2.RemainingTimeForGame = battleParams.RemainingTimeForGame;
-                    player.PlayerId2.RemainingQtyMovesForGame = battleParams.RemainingQtyMovesForGame;
                     player.PlayerId2.QtyCellsForWin = battleParams.QtyCellsForWin;
                     player.PlayerId2.MaxLengthFieldOfBattlefield = battleParams.MaxLengthFieldOfBattlefield;
                     player.PlayerId2.PlayingPairId = k;
@@ -247,10 +305,11 @@ namespace EPAM.TicTacToe
                 RunBattle(playingPairOfPlayers, playingPairOfPlayers[0].QtyCellsForWin, playingPairOfPlayers[0].MaxLengthFieldOfBattlefield);
             }
 
-            PublishGameResults(sqlServerName, dbLogin, dbPassword);
+            PublishGameResults();
+            FinishGame();
         }
 
-        private void PublishGameResults(string sqlServerName, string dbLogin, string dbPassword)
+        private void PublishGameResults()
         {
             string insertStatement = "insert into dbo.Results(PlayingPairId, PlayerId, ClassName, TeamName, IsHuman, IsWinner, RemainingTimeForGame, PlayerCellState, BattleResult) values(@PlayingPairId, @PlayerId, @ClassName, @TeamName, @IsHuman, @IsWinner, @RemainingTimeForGame, @PlayerCellState, @BattleResult)";
             string truncateStatement = "truncate table dbo.Results";
@@ -296,6 +355,55 @@ namespace EPAM.TicTacToe
 
                     sqlConn.Close();
                 }
+            }
+        }
+
+        private void PublishGameExceptions(string CustomizedExceptionDescription, string SystemExceptionDescription)
+        {
+            string insertStatement = "insert into dbo.Logs(CustomizedExceptionDescription, SystemExceptionDescription) values(@CustomizedExceptionDescription, @SystemExceptionDescription)";
+            using (SqlConnection sqlConn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\TicTacToeDB.mdf;Integrated Security=True"))
+            {
+                using (SqlCommand sqlComm = new SqlCommand(insertStatement, sqlConn))
+                {
+                    sqlComm.Parameters.Add("@CustomizedExceptionDescription", SqlDbType.NVarChar);
+                    sqlComm.Parameters.Add("@SystemExceptionDescription", SqlDbType.NVarChar);
+
+                    sqlConn.Open();
+
+                    sqlComm.Parameters["@CustomizedExceptionDescription"].Value = CustomizedExceptionDescription;
+                    sqlComm.Parameters["@SystemExceptionDescription"].Value = SystemExceptionDescription;
+                    sqlComm.ExecuteNonQuery();
+
+                    sqlConn.Close();
+                }
+            }
+
+            hasExceptionsOccured = true;
+        }
+
+        private void CleanGameLogs()
+        {
+            string truncateStatement = "truncate table dbo.Logs";
+            using (SqlConnection sqlConn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\TicTacToeDB.mdf;Integrated Security=True"))
+            {
+                using (SqlCommand sqlComm = new SqlCommand(truncateStatement, sqlConn))
+                {
+                    sqlConn.Open();
+                    sqlComm.ExecuteNonQuery();
+                    sqlConn.Close();
+                }
+            }
+        }
+
+        private void FinishGame()
+        {
+            if (hasExceptionsOccured)
+            {
+                MessageBox.Show("Game is over. Exceptions have occurred during process. Please, see logs in DB.");
+            }
+            else
+            {
+                MessageBox.Show("Game is over. Please, see results in DB.");
             }
         }
 

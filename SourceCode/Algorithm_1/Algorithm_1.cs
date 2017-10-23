@@ -4,7 +4,7 @@ namespace EPAM.TicTacToe
     [TeamName("First team")]
     public class Algorithm_1 : IPlayer
     {
-        public CellCoordinates NextMove(CellState.cellState[,] currentState, byte qtyCellsForWin, bool isHuman, TimeSpan remainingTimeForGame, int remainingQtyMovesForGame)
+        public CellCoordinates NextMove(CellState.cellState[,] currentState, byte qtyCellsForWin, bool isHuman, TimeSpan remainingTimeForGame)
         {
             CellCoordinates nextMove = new CellCoordinates();
             //if (currentState[0,0] == CellState.cellState.Empty)

@@ -42,7 +42,7 @@ namespace EPAM.TicTacToe
             ((Button)sender).IsEnabled = false;
             Game game = new Game();
 
-            game.RunGame(Convert.ToBoolean((int)GameTypesComboBox.SelectedValue), TeamList.SelectedValue.ToString(), PlayerDllPath.Text, sqlServerName.Text, dbLogin.Text, dbPassword.Text, dataGrid1.Items.OfType<BattleParams>().ToList());
+            game.RunGame(Convert.ToBoolean((int)GameTypesComboBox.SelectedValue), TeamList.SelectedValue.ToString(), PlayerDllPath.Text, dataGrid1.Items.OfType<BattleParams>().ToList());
             ((Button)sender).IsEnabled = true;
         }
 

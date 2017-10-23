@@ -15,4 +15,3 @@ C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Algorithms\EPAM.TicTac
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Algorithm_1\obj\Debug\Algorithm_1.csproj.CoreCompileInputs.cache
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Algorithm_1\obj\Debug\EPAM.TicTacToe.Algorithm_1.dll
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Algorithm_1\obj\Debug\EPAM.TicTacToe.Algorithm_1.pdb
-C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\Algorithm_1\obj\Debug\Algorithm_1.csprojResolveAssemblyReference.cache

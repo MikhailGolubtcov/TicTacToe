@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.IO;
+using System.Windows.Forms;
 
 namespace EPAM.TicTacToe
 {
@@ -22,7 +23,6 @@ namespace EPAM.TicTacToe
         internal IPlayer initializedPlayer;
         internal string battleResult;
         internal TimeSpan RemainingTimeForGame;
-        internal int RemainingQtyMovesForGame;
         internal byte QtyCellsForWin;
         internal byte MaxLengthFieldOfBattlefield;
 
@@ -38,11 +38,18 @@ namespace EPAM.TicTacToe
 
             foreach (string fileName in Directory.GetFiles(PlayersDllPath, "*.dll"))
             {
-                var assembly = Assembly.LoadFrom(fileName);
-
-                foreach (var type in assembly.GetTypes().Where(m => m.IsClass && m.GetInterface("IPlayer") != null))
+                try
                 {
-                    assemblies.Add(type);
+                    Assembly assembly = Assembly.LoadFrom(fileName);
+
+                    foreach (Type type in assembly.GetTypes().Where(m => m.IsClass && m.GetInterface("IPlayer") != null))
+                    {
+                        assemblies.Add(type);
+                    }
+                }
+                catch (FileLoadException e)
+                {
+                    MessageBox.Show("Error in algorithm file loading" + e.ToString());
                 }
             }
 
