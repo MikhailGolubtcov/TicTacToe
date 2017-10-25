@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EPAM.TicTacToe
 {
@@ -11,18 +12,17 @@ namespace EPAM.TicTacToe
     {
         static void Main(string[] args)
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FormHost());
+
             GUI_Test gui = new GUI_Test();
             gui.RunForm();
 
             gui.ReturnBattleParams();
 
 
-
-            //    UIParameters uIParameters = new UIParameters();
-            //uIParameters.InitializeComponent();
-            //uIParameters.Run()
-
-            System.Console.ReadLine();
+            //System.Console.ReadLine();
         }
     }
 }

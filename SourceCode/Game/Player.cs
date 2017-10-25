@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.IO;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace EPAM.TicTacToe
 {
@@ -25,6 +26,7 @@ namespace EPAM.TicTacToe
         internal TimeSpan RemainingTimeForGame;
         internal byte QtyCellsForWin;
         internal byte MaxLengthFieldOfBattlefield;
+        internal DBInteraction dbInteraction = new DBInteraction();
 
         public object Clone()
         {
@@ -33,12 +35,14 @@ namespace EPAM.TicTacToe
 
         internal List<Type> GetAssemblies(string PlayersDllPath)
         {
+            Regex regex = new Regex(@"(?<!\\)\\(?!\\)");
             List<Type> assemblies = new List<Type>();
-            PlayersDllPath = PlayersDllPath.Replace(@"\", @"\\");
+            regex.Replace(PlayersDllPath, @"\\");
+            //PlayersDllPath = PlayersDllPath.Replace(@"\", @"\\");
 
-            foreach (string fileName in Directory.GetFiles(PlayersDllPath, "*.dll"))
+            try
             {
-                try
+                foreach (string fileName in Directory.GetFiles(PlayersDllPath, "*.dll"))
                 {
                     Assembly assembly = Assembly.LoadFrom(fileName);
 
@@ -47,10 +51,10 @@ namespace EPAM.TicTacToe
                         assemblies.Add(type);
                     }
                 }
-                catch (FileLoadException e)
-                {
-                    MessageBox.Show("Error in algorithm file loading" + e.ToString());
-                }
+            }
+            catch (Exception e)
+            {
+                dbInteraction.PublishGameException("Exceptions in algorithms loading", e.ToString());
             }
 
             return assemblies;

@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithm_3", "TestAlgorith
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestAlgorithms", "TestAlgorithms", "{A77E7DE0-D7B3-4F4A-B892-49BBB0A1541D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "..\..\..\Downloads\Host+GUI без exe и dll и без Debug\2017.EPAM.Gomoku.FirstTeam-master + хост\TicTacToe\GUI.csproj", "{308A20AB-478A-4D4C-A27F-AC1946CD7144}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,12 @@ Global
 		{8D6C1D4A-203B-457C-9B1F-6542251A7E0D}.Development|Any CPU.Build.0 = Debug|Any CPU
 		{8D6C1D4A-203B-457C-9B1F-6542251A7E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D6C1D4A-203B-457C-9B1F-6542251A7E0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{308A20AB-478A-4D4C-A27F-AC1946CD7144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{308A20AB-478A-4D4C-A27F-AC1946CD7144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{308A20AB-478A-4D4C-A27F-AC1946CD7144}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{308A20AB-478A-4D4C-A27F-AC1946CD7144}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{308A20AB-478A-4D4C-A27F-AC1946CD7144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{308A20AB-478A-4D4C-A27F-AC1946CD7144}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,12 +9,8 @@ namespace EPAM.TicTacToe
     public interface IGUI
     {
         void RunForm();
-        //void LoadTeamNamesList(List<string> teamNamesList);
-        //bool ReturnIsVersusHuman();
-        //string ReturnTeamName();
         string ReturnPathToAlgorithms();
-        List<BattleParams> ReturnBattleParams();
-        void VisualizeNextMove(CellCoordinates cellCoordinates, CellState.cellState cellState);
+        void VisualizeNextMove(CellCoordinates cellCoordinates, PlayerCellState.playerCellState plCellState);
         void ClearBattleField();
     }
 }

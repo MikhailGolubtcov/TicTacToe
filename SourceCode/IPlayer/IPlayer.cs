@@ -3,7 +3,6 @@ namespace EPAM.TicTacToe
 {
     public interface IPlayer
     {
-        CellCoordinates NextMove(CellState.cellState[,] CurrentState, byte qtyCellsForWin, bool isHuman, TimeSpan remainingTimeForGame);
-        void RefreshUI(CellState.cellState[,] CurrentState);
+        CellCoordinates NextMove(CellState.cellState[,] CurrentState, byte qtyCellsForWin, TimeSpan remainingTimeForGame);
     }
 }

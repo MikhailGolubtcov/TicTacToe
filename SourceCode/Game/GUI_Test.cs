@@ -10,7 +10,7 @@ namespace EPAM.TicTacToe
     {
         public void RunForm()
         {
-
+            StartGame();
         }
 
         //bool ReturnIsVersusHuman()
@@ -25,19 +25,19 @@ namespace EPAM.TicTacToe
 
         public string ReturnPathToAlgorithms()
         {
-            return "C:\\Users\\Mikhail_Golubtcov\\Documents\\TicTacToe\\SourceCode\\Algorithms";
+            return "C:\\Users\\Mikhail_Golubtcov\\Documents\\TicTacToe\\Assemblies\\TestAlgorithms";
         }
 
         public List<BattleParams> ReturnBattleParams()
         {
             List<BattleParams> battleParams = new List<BattleParams>();
-            BattleParams battleParam1 = new BattleParams(3,7,TimeSpan.FromSeconds(20));
+            BattleParams battleParam1 = new BattleParams(3, 7, TimeSpan.FromSeconds(20));
             battleParams.Add(battleParam1);
 
             return battleParams;
         }
 
-        public void VisualizeNextMove(CellCoordinates cellCoordinates, CellState.cellState cellState)
+        public void VisualizeNextMove(CellCoordinates cellCoordinates, PlayerCellState.playerCellState plCellState)
         {
 
         }
@@ -49,12 +49,12 @@ namespace EPAM.TicTacToe
 
         public void StartGame()
         {
-            List<BattleParams> listBattleParams = new List<BattleParams>();
-            BattleParams battleParams = new BattleParams(3, 6, TimeSpan.FromSeconds(10));
-            listBattleParams.Add(battleParams);
+            //List<BattleParams> listBattleParams = new List<BattleParams>();
+            //BattleParams battleParams = new BattleParams(3, 8, TimeSpan.FromSeconds(10));
+            //listBattleParams.Add(battleParams);
 
-            ///Game battle = new Game();
-            //battle.RunGame("hgv", battleParams);
+            Game battle = new Game();
+            battle.RunGame("hgv", ReturnBattleParams(), this);
         }
 
 

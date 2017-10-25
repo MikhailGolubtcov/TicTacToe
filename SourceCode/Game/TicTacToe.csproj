@@ -71,17 +71,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BattleParams.cs" />
+    <Compile Include="DBInteraction.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="GUI_Test.cs" />
+    <Compile Include="GUI\FormHost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormHost.Designer.cs">
+      <DependentUpon>FormHost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Square.cs" />
+    <Compile Include="GUI\Table.cs" />
     <Compile Include="IGUI.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerCellState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +119,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="GUI\Resources\circle.png" />
+    <None Include="GUI\Resources\cross.png" />
+    <Content Include="GUI\tic-tac-toe.ico" />
     <Content Include="TicTacToeDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -104,6 +129,16 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>TicTacToeDB.mdf</DependentUpon>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GUI\FormHost.resx">
+      <DependentUpon>FormHost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

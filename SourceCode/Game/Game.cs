@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
+
 using System.Data;
 using System.Windows;
 using System.Reflection;
@@ -19,7 +19,7 @@ namespace EPAM.TicTacToe
         private List<Player> allPlayersList;
         private List<Player> playersTournamentList = new List<Player>();
         private int currentQtyEmptyCellsOnBattleField;
-        private bool hasExceptionsOccured;
+        private DBInteraction dbInteraction = new DBInteraction();
 
         private CellState.cellState[,] CreateBattleField(byte maxLengthFieldOfBattlefield)
         {
@@ -45,7 +45,7 @@ namespace EPAM.TicTacToe
             }
             catch (IndexOutOfRangeException e)
             {
-                PublishGameExceptions("Team \"" + algorithm.TeamName + "\" has returned coordinates outside the bound of battlefield.", e.ToString());
+                dbInteraction.PublishGameException("Team \"" + algorithm.TeamName + "\" has returned coordinates outside the bound of battlefield.", e.ToString());
                 settingPointResult = "Point is outside the bound";
             }
 
@@ -110,7 +110,7 @@ namespace EPAM.TicTacToe
                 }
                 catch (IndexOutOfRangeException e)
                 {
-                    PublishGameExceptions("CheckVictory engine has returned coordinates outside the bound of battlefield.", e.ToString());
+                    dbInteraction.PublishGameException("CheckVictory engine has returned coordinates outside the bound of battlefield.", e.ToString());
                 }
 
                 if (currentQtyOfVictoryCells >= qtyCellsForWin)
@@ -140,8 +140,9 @@ namespace EPAM.TicTacToe
             return num;
         }
 
-        private void RunBattle(List<Player> playingPairOfPlayers, byte qtyCellsForWin, byte maxLengthFieldOfBattlefield)
+        private void RunBattle(List<Player> playingPairOfPlayers, byte qtyCellsForWin, byte maxLengthFieldOfBattlefield, GUI_Test gui)
         {
+            gui.ClearBattleField();
             CellState.cellState[,] battleField;
             bool isVictory = false;
             string battleResult = "";
@@ -164,11 +165,12 @@ namespace EPAM.TicTacToe
 
                 try
                 {
-                    nextMove = playingPairOfPlayers[algorithmIndex].initializedPlayer.NextMove(battleField, qtyCellsForWin, playingPairOfPlayers[algorithmIndex].IsHuman, playingPairOfPlayers[algorithmIndex].RemainingTimeForGame);
+                    nextMove = playingPairOfPlayers[algorithmIndex].initializedPlayer.NextMove(battleField, qtyCellsForWin, playingPairOfPlayers[algorithmIndex].RemainingTimeForGame);
+                    gui.VisualizeNextMove(nextMove, playingPairOfPlayers[algorithmIndex].playerCellState);
                 }
                 catch (Exception e)
                 {
-                    PublishGameExceptions("Exception in algorithm's team " + playingPairOfPlayers[algorithmIndex].TeamName + " - nextMove method.", e.ToString());
+                    dbInteraction.PublishGameException("Exception in algorithm's team " + playingPairOfPlayers[algorithmIndex].TeamName + " - nextMove method.", e.ToString());
                     hasAlgorithmError = true;
                 }
 
@@ -225,32 +227,14 @@ namespace EPAM.TicTacToe
                 }
             }
             while (!isVictory);
-
-            //Refreshing UI after victory
-            try
-            {
-                if (playingPairOfPlayers[algorithmIndex].IsHuman)
-                {
-                    playingPairOfPlayers[algorithmIndex].initializedPlayer.RefreshUI(battleField);
-                }
-                else
-                {
-                    playingPairOfPlayers[(SByte)((algorithmIndex - 1) * (-1))].initializedPlayer.RefreshUI(battleField);
-                }
-            }
-            catch (Exception e)
-            {
-                PublishGameExceptions("Exception in algorithm's team " + playingPairOfPlayers[algorithmIndex].TeamName + " - RefreshUI method.", e.ToString());
-            }
-
         }
 
-        internal void RunGame(/*bool isVersusHuman, string teamName, */string playersDllPath, List<BattleParams> listBattleParams)
+        internal void RunGame(/*bool isVersusHuman, string teamName, */string playersDllPath, List<BattleParams> listBattleParams, GUI_Test gui)
         {
-            CleanGameLogs();
+            dbInteraction.CleanGameLogs();
 
             Player players = new Player();
-            allPlayersList = players.ReturnAllPlayers(/*isVersusHuman, teamName*/false, "NoName", playersDllPath);
+            allPlayersList = players.ReturnAllPlayers(/*isVersusHuman, teamName*/false, "NoName", gui.ReturnPathToAlgorithms());
 
             int k = 1;
             var queryPlayers = allPlayersList.SelectMany(PlayerId => allPlayersList, (PlayerId1, PlayerId2) => new { PlayerId1, PlayerId2 }).Where(PlayerId => PlayerId.PlayerId1 != PlayerId.PlayerId2);
@@ -264,7 +248,7 @@ namespace EPAM.TicTacToe
                 }
                 catch (Exception e)
                 {
-                    PublishGameExceptions("Team's \"" + player.PlayerId1.TeamName + "\" algorithm has thrown exceptions while creating class object via constructor.", e.ToString());
+                    dbInteraction.PublishGameException("Team's \"" + player.PlayerId1.TeamName + "\" algorithm has thrown exceptions while creating class object via constructor.", e.ToString());
                 }
 
                 try
@@ -275,7 +259,7 @@ namespace EPAM.TicTacToe
                 }
                 catch (Exception e)
                 {
-                    PublishGameExceptions("Team's \"" + player.PlayerId2.TeamName + "\" algorithm has thrown exceptions while creating class object via constructor.", e.ToString());
+                    dbInteraction.PublishGameException("Team's \"" + player.PlayerId2.TeamName + "\" algorithm has thrown exceptions while creating class object via constructor.", e.ToString());
                 }
 
                 player.PlayerId1.playerCellState = PlayerCellState.playerCellState.X;
@@ -302,102 +286,16 @@ namespace EPAM.TicTacToe
                 List<Player> playingPairOfPlayers = new List<Player>();
                 playingPairOfPlayers.AddRange(playersTournamentList.Where(CurrentPlayingPairId => CurrentPlayingPairId.PlayingPairId == n));
 
-                RunBattle(playingPairOfPlayers, playingPairOfPlayers[0].QtyCellsForWin, playingPairOfPlayers[0].MaxLengthFieldOfBattlefield);
+                RunBattle(playingPairOfPlayers, playingPairOfPlayers[0].QtyCellsForWin, playingPairOfPlayers[0].MaxLengthFieldOfBattlefield, gui);
             }
 
-            PublishGameResults();
+            dbInteraction.PublishGameResults(playersTournamentList);
             FinishGame();
-        }
-
-        private void PublishGameResults()
-        {
-            string insertStatement = "insert into dbo.Results(PlayingPairId, PlayerId, ClassName, TeamName, IsHuman, IsWinner, RemainingTimeForGame, PlayerCellState, BattleResult) values(@PlayingPairId, @PlayerId, @ClassName, @TeamName, @IsHuman, @IsWinner, @RemainingTimeForGame, @PlayerCellState, @BattleResult)";
-            string truncateStatement = "truncate table dbo.Results";
-            using (SqlConnection sqlConn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\TicTacToeDB.mdf;Integrated Security=True"))
-            {
-                using (SqlCommand sqlCommand = new SqlCommand(truncateStatement, sqlConn))
-                {
-                    sqlConn.Open();
-                    sqlCommand.ExecuteNonQuery();
-                    sqlConn.Close();
-                }
-                using (SqlCommand sqlComm = new SqlCommand(insertStatement, sqlConn))
-                {
-                    sqlComm.Parameters.Add("@PlayingPairId", SqlDbType.Int);
-                    sqlComm.Parameters.Add("@PlayerId", SqlDbType.Int);
-                    sqlComm.Parameters.Add("@ClassName", SqlDbType.NVarChar);
-                    sqlComm.Parameters.Add("@TeamName", SqlDbType.NVarChar);
-                    sqlComm.Parameters.Add("@IsHuman", SqlDbType.Bit);
-                    sqlComm.Parameters.Add("@IsWinner", SqlDbType.Bit);
-                    sqlComm.Parameters.Add("@RemainingTimeForGame", SqlDbType.Time);
-                    sqlComm.Parameters.Add("@PlayerCellState", SqlDbType.NVarChar);
-                    sqlComm.Parameters.Add("@battleResult", SqlDbType.NVarChar);
-
-                    sqlConn.Open();
-
-                    foreach (Player player in playersTournamentList)
-                    {
-                        sqlComm.Parameters["@PlayingPairId"].Value = player.PlayingPairId;
-                        sqlComm.Parameters["@PlayerId"].Value = player.PlayerId;
-                        sqlComm.Parameters["@ClassName"].Value = player.ClassName;
-                        sqlComm.Parameters["@TeamName"].Value = player.TeamName;
-                        sqlComm.Parameters["@IsHuman"].Value = player.IsHuman;
-                        sqlComm.Parameters["@IsWinner"].Value = player.isWinner;
-                        sqlComm.Parameters["@RemainingTimeForGame"].Value = player.RemainingTimeForGame;
-                        sqlComm.Parameters["@PlayerCellState"].Value = player.playerCellState;
-                        if (player.battleResult != null)
-                            sqlComm.Parameters["@battleResult"].Value = player.battleResult;
-                        else
-                            sqlComm.Parameters["@battleResult"].Value = DBNull.Value;
-
-                        sqlComm.ExecuteNonQuery();
-                    }
-
-                    sqlConn.Close();
-                }
-            }
-        }
-
-        private void PublishGameExceptions(string CustomizedExceptionDescription, string SystemExceptionDescription)
-        {
-            string insertStatement = "insert into dbo.Logs(CustomizedExceptionDescription, SystemExceptionDescription) values(@CustomizedExceptionDescription, @SystemExceptionDescription)";
-            using (SqlConnection sqlConn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\TicTacToeDB.mdf;Integrated Security=True"))
-            {
-                using (SqlCommand sqlComm = new SqlCommand(insertStatement, sqlConn))
-                {
-                    sqlComm.Parameters.Add("@CustomizedExceptionDescription", SqlDbType.NVarChar);
-                    sqlComm.Parameters.Add("@SystemExceptionDescription", SqlDbType.NVarChar);
-
-                    sqlConn.Open();
-
-                    sqlComm.Parameters["@CustomizedExceptionDescription"].Value = CustomizedExceptionDescription;
-                    sqlComm.Parameters["@SystemExceptionDescription"].Value = SystemExceptionDescription;
-                    sqlComm.ExecuteNonQuery();
-
-                    sqlConn.Close();
-                }
-            }
-
-            hasExceptionsOccured = true;
-        }
-
-        private void CleanGameLogs()
-        {
-            string truncateStatement = "truncate table dbo.Logs";
-            using (SqlConnection sqlConn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\TicTacToeDB.mdf;Integrated Security=True"))
-            {
-                using (SqlCommand sqlComm = new SqlCommand(truncateStatement, sqlConn))
-                {
-                    sqlConn.Open();
-                    sqlComm.ExecuteNonQuery();
-                    sqlConn.Close();
-                }
-            }
         }
 
         private void FinishGame()
         {
-            if (hasExceptionsOccured)
+            if (dbInteraction.HaveExceptionsOccurred())
             {
                 MessageBox.Show("Game is over. Exceptions have occurred during process. Please, see logs in DB.");
             }
