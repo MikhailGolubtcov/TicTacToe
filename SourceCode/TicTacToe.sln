@@ -6,12 +6,24 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPlayer", "IPlayer\IPlayer.csproj", "{354E97C0-3AC7-4425-8ECD-0E8F0D2A15EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe", "Game\TicTacToe.csproj", "{9A0A9AD1-FC38-438B-A7FA-15F92B232E5F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{354E97C0-3AC7-4425-8ECD-0E8F0D2A15EC} = {354E97C0-3AC7-4425-8ECD-0E8F0D2A15EC}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithm_1", "TestAlgorithms\Algorithm_1\Algorithm_1.csproj", "{DABC2915-C981-4AA9-B863-FD0843889713}"
+	ProjectSection(ProjectDependencies) = postProject
+		{354E97C0-3AC7-4425-8ECD-0E8F0D2A15EC} = {354E97C0-3AC7-4425-8ECD-0E8F0D2A15EC}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithm_2", "TestAlgorithms\Algorithm_2\Algorithm_2.csproj", "{E05BAEBF-8551-4B6C-AE6A-A97DAB5F5E35}"
+	ProjectSection(ProjectDependencies) = postProject
+		{354E97C0-3AC7-4425-8ECD-0E8F0D2A15EC} = {354E97C0-3AC7-4425-8ECD-0E8F0D2A15EC}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithm_3", "TestAlgorithms\Algorithm_3\Algorithm_3.csproj", "{8D6C1D4A-203B-457C-9B1F-6542251A7E0D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{354E97C0-3AC7-4425-8ECD-0E8F0D2A15EC} = {354E97C0-3AC7-4425-8ECD-0E8F0D2A15EC}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestAlgorithms", "TestAlgorithms", "{A77E7DE0-D7B3-4F4A-B892-49BBB0A1541D}"
 EndProject

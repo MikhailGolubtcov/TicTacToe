@@ -53,7 +53,7 @@ namespace EPAM.TicTacToe
             BattleParams battleParams = new BattleParams(3, 6, TimeSpan.FromSeconds(10));
             listBattleParams.Add(battleParams);
 
-            //Game battle = new Game();
+            ///Game battle = new Game();
             //battle.RunGame("hgv", battleParams);
         }
 

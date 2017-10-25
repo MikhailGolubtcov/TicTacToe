@@ -1,0 +1,5 @@
+Assemblies/
+*.dll
+*.exe
+*.pdb
+*.cache

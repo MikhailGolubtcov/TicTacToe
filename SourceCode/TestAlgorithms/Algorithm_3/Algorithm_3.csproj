@@ -32,7 +32,7 @@
   <ItemGroup>
     <Reference Include="EPAM.TicTacToe.IPlayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Game\bin\Debug\EPAM.TicTacToe.IPlayer.dll</HintPath>
+      <HintPath>..\..\..\Assemblies\Game\EPAM.TicTacToe.IPlayer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
