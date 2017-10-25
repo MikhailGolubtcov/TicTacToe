@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("tictactoedb.mdf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("tictactoedb_log.ldf")]
 
 

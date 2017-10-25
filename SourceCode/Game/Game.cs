@@ -245,12 +245,12 @@ namespace EPAM.TicTacToe
 
         }
 
-        internal void RunGame(bool isVersusHuman, string teamName, string playersDllPath, List<BattleParams> listBattleParams)
+        internal void RunGame(/*bool isVersusHuman, string teamName, */string playersDllPath, List<BattleParams> listBattleParams)
         {
             CleanGameLogs();
 
             Player players = new Player();
-            allPlayersList = players.ReturnAllPlayers(isVersusHuman, teamName, playersDllPath);
+            allPlayersList = players.ReturnAllPlayers(/*isVersusHuman, teamName*/false, "NoName", playersDllPath);
 
             int k = 1;
             var queryPlayers = allPlayersList.SelectMany(PlayerId => allPlayersList, (PlayerId1, PlayerId2) => new { PlayerId1, PlayerId2 }).Where(PlayerId => PlayerId.PlayerId1 != PlayerId.PlayerId2);

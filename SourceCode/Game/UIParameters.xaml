@@ -19,7 +19,6 @@
                 <DataGridTextColumn Binding="{Binding Path=QtyCellsForWin}" Width="Auto" Header="Quantity cells for win"/>
                 <DataGridTextColumn Binding="{Binding Path=MaxLengthFieldOfBattlefield}" Width="Auto" Header="Maximum battlefield length"/>
                 <DataGridTextColumn Binding="{Binding Path=RemainingTimeForGame}" Width="Auto" Header="Limit time for whole battle"/>
-                <DataGridTextColumn Binding="{Binding Path=RemainingQtyMovesForGame}" Width="Auto" Header="Limit quantity of moves for whole battle"/>
             </DataGrid.Columns>
         </DataGrid>
         <ComboBox HorizontalAlignment="Left" Margin="191.259,-106,0,0" VerticalAlignment="Top" Width="150" Name="GameTypesComboBox" 

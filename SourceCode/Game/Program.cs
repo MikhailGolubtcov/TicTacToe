@@ -11,8 +11,10 @@ namespace EPAM.TicTacToe
     {
         static void Main(string[] args)
         {
-            Game battle = new Game();
-            battle.RunGame();
+            GUI_Test gui = new GUI_Test();
+            gui.RunForm();
+
+            gui.ReturnBattleParams();
 
 
 
