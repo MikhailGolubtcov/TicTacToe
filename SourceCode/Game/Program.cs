@@ -16,7 +16,7 @@ namespace EPAM.TicTacToe
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormHost());
 
-            GUI_Test gui = new GUI_Test();
+            FormHost gui = new FormHost();
             gui.RunForm();
 
             gui.ReturnBattleParams();

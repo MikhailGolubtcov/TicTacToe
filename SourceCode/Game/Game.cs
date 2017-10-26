@@ -140,7 +140,7 @@ namespace EPAM.TicTacToe
             return num;
         }
 
-        private void RunBattle(List<Player> playingPairOfPlayers, byte qtyCellsForWin, byte maxLengthFieldOfBattlefield, GUI_Test gui)
+        private void RunBattle(List<Player> playingPairOfPlayers, byte qtyCellsForWin, byte maxLengthFieldOfBattlefield, FormHost gui)
         {
             gui.ClearBattleField();
             CellState.cellState[,] battleField;
@@ -229,7 +229,7 @@ namespace EPAM.TicTacToe
             while (!isVictory);
         }
 
-        internal void RunGame(/*bool isVersusHuman, string teamName, */string playersDllPath, List<BattleParams> listBattleParams, GUI_Test gui)
+        internal void RunGame(/*bool isVersusHuman, string teamName, */string playersDllPath, List<BattleParams> listBattleParams, FormHost gui)
         {
             dbInteraction.CleanGameLogs();
 

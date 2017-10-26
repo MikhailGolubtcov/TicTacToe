@@ -28,6 +28,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestAlgorithms", "TestAlgorithms", "{A77E7DE0-D7B3-4F4A-B892-49BBB0A1541D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "..\..\..\Downloads\Host+GUI без exe и dll и без Debug\2017.EPAM.Gomoku.FirstTeam-master + хост\TicTacToe\GUI.csproj", "{308A20AB-478A-4D4C-A27F-AC1946CD7144}"
+	ProjectSection(ProjectDependencies) = postProject
+		{354E97C0-3AC7-4425-8ECD-0E8F0D2A15EC} = {354E97C0-3AC7-4425-8ECD-0E8F0D2A15EC}
+		{9A0A9AD1-FC38-438B-A7FA-15F92B232E5F} = {9A0A9AD1-FC38-438B-A7FA-15F92B232E5F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
