@@ -219,7 +219,7 @@
             0,
             0});
             this.numericUpDownWinSquares.Minimum = new decimal(new int[] {
-            5,
+            3,
             0,
             0,
             0});
@@ -228,7 +228,7 @@
             this.numericUpDownWinSquares.TabIndex = 10;
             this.numericUpDownWinSquares.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDownWinSquares.Value = new decimal(new int[] {
-            5,
+            3,
             0,
             0,
             0});
