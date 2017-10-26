@@ -178,7 +178,7 @@ namespace EPAM.TicTacToe
             listViewParameters.Items.Clear();
             foreach (BattleParams bp in listParameters)
             {
-                ListViewItem lvi = new ListViewItem(new string[] { bp.MaxLengthFieldOfBattlefield.ToString(), bp.QtyCellsForWin.ToString(), bp.RemainingTimeForGame.ToString() });
+                ListViewItem lvi = new ListViewItem(new string[] { bp.QtyCellsForWin.ToString(), bp.MaxLengthFieldOfBattlefield.ToString(), bp.RemainingTimeForGame.ToString() });
                 listViewParameters.Items.Add(lvi);
             }
         }
