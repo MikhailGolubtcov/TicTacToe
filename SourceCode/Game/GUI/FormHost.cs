@@ -314,6 +314,11 @@ namespace EPAM.TicTacToe
             return listParameters;
         }
 
+        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
         public void VisualizeNextMove(CellCoordinates cellCoordinates, PlayerCellState.playerCellState cellState)
         {
             foreach (Square s in listSquares)
@@ -333,12 +338,20 @@ namespace EPAM.TicTacToe
                     }
                 }
             }
-            playGround.Invalidate();
+
+            playGround.Refresh();
         }
+
 
         public void ClearBattleField()
         {
-            listSquares.Clear();
+            foreach (Square s in listSquares)
+            {
+                if (s.Value != 0)
+                {
+                    s.Value = 0;
+                }
+            }
         }
     }
 }

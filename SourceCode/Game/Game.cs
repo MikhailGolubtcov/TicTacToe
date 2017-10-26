@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Threading;
 using System.Data;
 using System.Windows;
 using System.Reflection;
@@ -167,6 +167,7 @@ namespace EPAM.TicTacToe
                 {
                     nextMove = playingPairOfPlayers[algorithmIndex].initializedPlayer.NextMove(battleField, qtyCellsForWin, playingPairOfPlayers[algorithmIndex].RemainingTimeForGame);
                     gui.VisualizeNextMove(nextMove, playingPairOfPlayers[algorithmIndex].playerCellState);
+                    Thread.Sleep(1000);
                 }
                 catch (Exception e)
                 {

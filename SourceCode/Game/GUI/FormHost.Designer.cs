@@ -74,7 +74,7 @@
             // 
             this.numericUpDownNumberFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.numericUpDownNumberFields.Location = new System.Drawing.Point(25, 81);
-            this.numericUpDownNumberFields.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownNumberFields.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownNumberFields.Maximum = new decimal(new int[] {
             255,
             0,
@@ -101,7 +101,7 @@
             this.buttonPlay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonPlay.Location = new System.Drawing.Point(503, 590);
-            this.buttonPlay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonPlay.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPlay.Name = "buttonPlay";
             this.buttonPlay.Size = new System.Drawing.Size(151, 60);
             this.buttonPlay.TabIndex = 6;
@@ -118,9 +118,9 @@
             this.groupBox1.Controls.Add(this.textBoxPath);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(8, 15);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(323, 512);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
@@ -131,7 +131,7 @@
             this.radioButtonHumvsAlg.AutoSize = true;
             this.radioButtonHumvsAlg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButtonHumvsAlg.Location = new System.Drawing.Point(12, 199);
-            this.radioButtonHumvsAlg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButtonHumvsAlg.Margin = new System.Windows.Forms.Padding(4);
             this.radioButtonHumvsAlg.Name = "radioButtonHumvsAlg";
             this.radioButtonHumvsAlg.Size = new System.Drawing.Size(154, 21);
             this.radioButtonHumvsAlg.TabIndex = 6;
@@ -145,7 +145,7 @@
             this.radioButtonAlgvsAlg.Checked = true;
             this.radioButtonAlgvsAlg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButtonAlgvsAlg.Location = new System.Drawing.Point(12, 171);
-            this.radioButtonAlgvsAlg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButtonAlgvsAlg.Margin = new System.Windows.Forms.Padding(4);
             this.radioButtonAlgvsAlg.Name = "radioButtonAlgvsAlg";
             this.radioButtonAlgvsAlg.Size = new System.Drawing.Size(168, 21);
             this.radioButtonAlgvsAlg.TabIndex = 5;
@@ -168,11 +168,13 @@
             // 
             this.textBoxPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPath.Location = new System.Drawing.Point(8, 66);
-            this.textBoxPath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPath.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPath.Multiline = true;
             this.textBoxPath.Name = "textBoxPath";
             this.textBoxPath.Size = new System.Drawing.Size(307, 68);
             this.textBoxPath.TabIndex = 0;
+            this.textBoxPath.Tag = "";
+            this.textBoxPath.Text = "C:\\Users\\Mikhail_Golubtcov\\Documents\\TicTacToe\\Assemblies\\TestAlgorithms";
             // 
             // groupBox2
             // 
@@ -187,9 +189,9 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(339, 15);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(323, 512);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
@@ -198,7 +200,7 @@
             // buttonInsert
             // 
             this.buttonInsert.Location = new System.Drawing.Point(80, 438);
-            this.buttonInsert.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonInsert.Margin = new System.Windows.Forms.Padding(4);
             this.buttonInsert.Name = "buttonInsert";
             this.buttonInsert.Size = new System.Drawing.Size(141, 44);
             this.buttonInsert.TabIndex = 11;
@@ -210,7 +212,7 @@
             // 
             this.numericUpDownWinSquares.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.numericUpDownWinSquares.Location = new System.Drawing.Point(20, 150);
-            this.numericUpDownWinSquares.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownWinSquares.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownWinSquares.Maximum = new decimal(new int[] {
             255,
             0,
@@ -247,12 +249,13 @@
             this.dateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimePicker.Location = new System.Drawing.Point(20, 224);
-            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.ShowUpDown = true;
             this.dateTimePicker.Size = new System.Drawing.Size(139, 23);
             this.dateTimePicker.TabIndex = 6;
             this.dateTimePicker.Value = new System.DateTime(2017, 10, 20, 0, 0, 0, 0);
+            this.dateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             // 
             // label6
             // 
@@ -280,7 +283,7 @@
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.playGround);
             this.panel1.Location = new System.Drawing.Point(675, 15);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(749, 683);
             this.panel1.TabIndex = 14;
@@ -289,7 +292,7 @@
             // 
             this.playGround.BackColor = System.Drawing.Color.White;
             this.playGround.Location = new System.Drawing.Point(4, 4);
-            this.playGround.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.playGround.Margin = new System.Windows.Forms.Padding(4);
             this.playGround.Name = "playGround";
             this.playGround.Size = new System.Drawing.Size(5721, 5281);
             this.playGround.TabIndex = 16;
@@ -304,7 +307,7 @@
             this.columnHeader2,
             this.columnHeader3});
             this.listViewParameters.Location = new System.Drawing.Point(8, 545);
-            this.listViewParameters.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listViewParameters.Margin = new System.Windows.Forms.Padding(4);
             this.listViewParameters.Name = "listViewParameters";
             this.listViewParameters.Size = new System.Drawing.Size(468, 155);
             this.listViewParameters.TabIndex = 15;
@@ -331,7 +334,7 @@
             // 
             this.buttonDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonDelete.Image")));
             this.buttonDelete.Location = new System.Drawing.Point(477, 672);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(4);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(33, 31);
             this.buttonDelete.TabIndex = 16;
@@ -350,7 +353,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonPlay);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormHost";
             this.Text = "Крестики-нолики";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNumberFields)).EndInit();
