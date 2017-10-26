@@ -66,6 +66,7 @@ namespace EPAM.TicTacToe
             listParameters.Add(new BattleParams((byte)numericUpDownNumberFields.Value, (byte)numericUpDownWinSquares.Value, dateTimePicker.Value.TimeOfDay));
             Insert();
         }
+
         private void buttonPlay_Click(object sender, EventArgs e)
         {
             buttonPlayClicked = !buttonPlayClicked;
@@ -82,10 +83,10 @@ namespace EPAM.TicTacToe
 
             fieldValue = listParameters[0].QtyCellsForWin;
             CreateSquares();
+
+            Game game = new Game();
+            game.RunGame(textBoxPath.ToString(), listParameters, this);
         }
-
-
- 
 
         //↓↓↓ Рисует квадратики ↓↓↓
         private void playGround_Paint(object sender, PaintEventArgs e)
@@ -170,16 +171,18 @@ namespace EPAM.TicTacToe
             }
         }
 
+
         //↓↓↓ Заносит данные в таблицу ↓↓↓
         void Insert()
         {
             listViewParameters.Items.Clear();
-            foreach (Table t in listParameters)
+            foreach (BattleParams bp in listParameters)
             {
-                ListViewItem lvi = new ListViewItem(new string[] { t.NumberFields.ToString(), t.WinSquares.ToString(), t.TimeBattle });
+                ListViewItem lvi = new ListViewItem(new string[] { bp.MaxLengthFieldOfBattlefield.ToString(), bp.QtyCellsForWin.ToString(), bp.RemainingTimeForGame.ToString() });
                 listViewParameters.Items.Add(lvi);
             }
         }
+
 
         //↓↓↓ Создаёт квадратики, которые в последствии будут отрисованы ↓↓↓
         void CreateSquares()
