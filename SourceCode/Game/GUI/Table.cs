@@ -9,14 +9,14 @@ namespace EPAM.TicTacToe
 {
     public class Table
     {
-        public int NumberFields { get; set; }
         public int WinSquares { get; set; }
+        public int NumberFields { get; set; }
         public string TimeBattle { get; set; }
 
-        public Table (int numberFields, int winSquares, string timeBattle)
+        public Table (int winSquares, int numberFields, string timeBattle)
         {
-            NumberFields = numberFields;
             WinSquares = winSquares;
+            NumberFields = numberFields;
             TimeBattle = timeBattle;
         }
     }

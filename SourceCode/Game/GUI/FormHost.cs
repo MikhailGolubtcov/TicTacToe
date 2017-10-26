@@ -63,7 +63,7 @@ namespace EPAM.TicTacToe
         //↓↓↓ Внесение данных в таблицу при нажатии кнопки "Занести в таблицу" ↓↓↓
         private void buttonInsert_Click(object sender, EventArgs e)
         {
-            listParameters.Add(new BattleParams((byte)numericUpDownNumberFields.Value, (byte)numericUpDownWinSquares.Value, dateTimePicker.Value.TimeOfDay));
+            listParameters.Add(new BattleParams((byte)numericUpDownWinSquares.Value, (byte)numericUpDownNumberFields.Value, dateTimePicker.Value.TimeOfDay));
             Insert();
         }
 
@@ -81,7 +81,7 @@ namespace EPAM.TicTacToe
                 buttonPlay.Text = "Играть";
             }
 
-            fieldValue = listParameters[0].QtyCellsForWin;
+            fieldValue = listParameters[0].MaxLengthFieldOfBattlefield;
             CreateSquares();
 
             Game game = new Game();

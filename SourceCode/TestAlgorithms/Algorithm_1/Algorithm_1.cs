@@ -12,10 +12,10 @@ namespace EPAM.TicTacToe
             //    nextMove.X = 0;
             //    nextMove.Y = 0;
             //}
-            if (currentState[1, 1] == CellState.cellState.Empty)
+            if (currentState[1, 4] == CellState.cellState.Empty)
             {
                 nextMove.X = 1;
-                nextMove.Y = 1;
+                nextMove.Y = 4;
             }
             else if (currentState[2, 0] == CellState.cellState.Empty)
             {

@@ -1,4 +1,6 @@
+TicTacToe/Assemblies
 *.dll
 *.exe
 *.pdb
 *.cache
+*.zip
