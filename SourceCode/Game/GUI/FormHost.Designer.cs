@@ -67,18 +67,16 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(17, 49);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(13, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 17);
+            this.label1.Size = new System.Drawing.Size(154, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Выберите количество полей:";
             // 
             // numericUpDownNumberFields
             // 
             this.numericUpDownNumberFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDownNumberFields.Location = new System.Drawing.Point(23, 81);
-            this.numericUpDownNumberFields.Margin = new System.Windows.Forms.Padding(4);
+            this.numericUpDownNumberFields.Location = new System.Drawing.Point(17, 66);
             this.numericUpDownNumberFields.Maximum = new decimal(new int[] {
             255,
             0,
@@ -90,7 +88,7 @@
             0,
             0});
             this.numericUpDownNumberFields.Name = "numericUpDownNumberFields";
-            this.numericUpDownNumberFields.Size = new System.Drawing.Size(136, 23);
+            this.numericUpDownNumberFields.Size = new System.Drawing.Size(102, 20);
             this.numericUpDownNumberFields.TabIndex = 2;
             this.numericUpDownNumberFields.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDownNumberFields.Value = new decimal(new int[] {
@@ -104,10 +102,9 @@
             // 
             this.buttonPlay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonPlay.Location = new System.Drawing.Point(261, 667);
-            this.buttonPlay.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonPlay.Location = new System.Drawing.Point(196, 542);
             this.buttonPlay.Name = "buttonPlay";
-            this.buttonPlay.Size = new System.Drawing.Size(151, 60);
+            this.buttonPlay.Size = new System.Drawing.Size(113, 49);
             this.buttonPlay.TabIndex = 6;
             this.buttonPlay.Text = "Играть";
             this.buttonPlay.UseVisualStyleBackColor = false;
@@ -121,11 +118,9 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.textBoxPath);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(8, 49);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(6, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(323, 367);
+            this.groupBox1.Size = new System.Drawing.Size(242, 298);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Хост";
@@ -134,21 +129,19 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(8, 42);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(6, 34);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(255, 17);
+            this.label3.Size = new System.Drawing.Size(199, 13);
             this.label3.TabIndex = 1;
             this.label3.Text = "Введите путь к папке с алгоритмами:";
             // 
             // textBoxPath
             // 
             this.textBoxPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxPath.Location = new System.Drawing.Point(8, 66);
-            this.textBoxPath.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxPath.Location = new System.Drawing.Point(6, 54);
             this.textBoxPath.Multiline = true;
             this.textBoxPath.Name = "textBoxPath";
-            this.textBoxPath.Size = new System.Drawing.Size(307, 68);
+            this.textBoxPath.Size = new System.Drawing.Size(231, 56);
             this.textBoxPath.TabIndex = 0;
             this.textBoxPath.Tag = "";
             this.textBoxPath.Text = "C:\\Users\\Mikhail_Golubtcov\\Documents\\TicTacToe\\Assemblies\\Algorithms";
@@ -165,21 +158,18 @@
             this.groupBox2.Controls.Add(this.numericUpDownNumberFields);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox2.Location = new System.Drawing.Point(339, 49);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Location = new System.Drawing.Point(254, 40);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(323, 367);
+            this.groupBox2.Size = new System.Drawing.Size(242, 298);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Данные для игры";
             // 
             // buttonInsert
             // 
-            this.buttonInsert.Location = new System.Drawing.Point(83, 288);
-            this.buttonInsert.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonInsert.Location = new System.Drawing.Point(62, 234);
             this.buttonInsert.Name = "buttonInsert";
-            this.buttonInsert.Size = new System.Drawing.Size(141, 44);
+            this.buttonInsert.Size = new System.Drawing.Size(106, 36);
             this.buttonInsert.TabIndex = 11;
             this.buttonInsert.Text = "Занести в таблицу";
             this.buttonInsert.UseVisualStyleBackColor = true;
@@ -188,8 +178,7 @@
             // numericUpDownWinSquares
             // 
             this.numericUpDownWinSquares.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDownWinSquares.Location = new System.Drawing.Point(20, 150);
-            this.numericUpDownWinSquares.Margin = new System.Windows.Forms.Padding(4);
+            this.numericUpDownWinSquares.Location = new System.Drawing.Point(15, 122);
             this.numericUpDownWinSquares.Maximum = new decimal(new int[] {
             255,
             0,
@@ -201,7 +190,7 @@
             0,
             0});
             this.numericUpDownWinSquares.Name = "numericUpDownWinSquares";
-            this.numericUpDownWinSquares.Size = new System.Drawing.Size(136, 23);
+            this.numericUpDownWinSquares.Size = new System.Drawing.Size(102, 20);
             this.numericUpDownWinSquares.TabIndex = 10;
             this.numericUpDownWinSquares.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDownWinSquares.Value = new decimal(new int[] {
@@ -214,10 +203,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(16, 122);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(12, 99);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(283, 17);
+            this.label8.Size = new System.Drawing.Size(220, 13);
             this.label8.TabIndex = 9;
             this.label8.Text = "Введите количество выигрышных клеток:";
             // 
@@ -225,11 +213,10 @@
             // 
             this.dateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker.Location = new System.Drawing.Point(20, 224);
-            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker.Location = new System.Drawing.Point(15, 182);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.ShowUpDown = true;
-            this.dateTimePicker.Size = new System.Drawing.Size(139, 23);
+            this.dateTimePicker.Size = new System.Drawing.Size(105, 20);
             this.dateTimePicker.TabIndex = 6;
             this.dateTimePicker.Value = new System.DateTime(2017, 10, 20, 0, 0, 0, 0);
             // 
@@ -237,20 +224,18 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(16, 196);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(12, 159);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(179, 17);
+            this.label6.Size = new System.Drawing.Size(140, 13);
             this.label6.TabIndex = 4;
             this.label6.Text = "Введите время сражения:";
             // 
             // labelField
             // 
             this.labelField.AutoSize = true;
-            this.labelField.Location = new System.Drawing.Point(185, 85);
-            this.labelField.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelField.Location = new System.Drawing.Point(139, 69);
             this.labelField.Name = "labelField";
-            this.labelField.Size = new System.Drawing.Size(43, 17);
+            this.labelField.Size = new System.Drawing.Size(35, 13);
             this.labelField.TabIndex = 3;
             this.labelField.Text = "3 x 3";
             // 
@@ -261,19 +246,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.playGround);
-            this.panel1.Location = new System.Drawing.Point(675, 15);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(502, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(780, 719);
+            this.panel1.Size = new System.Drawing.Size(601, 580);
             this.panel1.TabIndex = 14;
             // 
             // playGround
             // 
             this.playGround.BackColor = System.Drawing.Color.White;
-            this.playGround.Location = new System.Drawing.Point(4, 4);
-            this.playGround.Margin = new System.Windows.Forms.Padding(4);
+            this.playGround.Location = new System.Drawing.Point(3, 3);
             this.playGround.Name = "playGround";
-            this.playGround.Size = new System.Drawing.Size(5721, 5281);
+            this.playGround.Size = new System.Drawing.Size(4291, 4291);
             this.playGround.TabIndex = 16;
             this.playGround.TabStop = false;
             this.playGround.Paint += new System.Windows.Forms.PaintEventHandler(this.playGround_Paint);
@@ -286,10 +269,9 @@
             this.columnHeader2,
             this.columnHeader3});
             this.listViewParameters.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listViewParameters.Location = new System.Drawing.Point(33, 437);
-            this.listViewParameters.Margin = new System.Windows.Forms.Padding(4);
+            this.listViewParameters.Location = new System.Drawing.Point(25, 355);
             this.listViewParameters.Name = "listViewParameters";
-            this.listViewParameters.Size = new System.Drawing.Size(584, 208);
+            this.listViewParameters.Size = new System.Drawing.Size(439, 170);
             this.listViewParameters.TabIndex = 15;
             this.listViewParameters.UseCompatibleStateImageBehavior = false;
             this.listViewParameters.View = System.Windows.Forms.View.Details;
@@ -317,8 +299,7 @@
             this.менюToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1479, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1115, 24);
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "Меню";
             // 
@@ -329,21 +310,21 @@
             this.changeToolStripMenuItem,
             this.aboutProgramToolStripMenuItem});
             this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
-            this.менюToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.менюToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.менюToolStripMenuItem.Text = "Справка";
             // 
             // manualToolStripMenuItem
             // 
             this.manualToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("manualToolStripMenuItem.Image")));
             this.manualToolStripMenuItem.Name = "manualToolStripMenuItem";
-            this.manualToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
+            this.manualToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.manualToolStripMenuItem.Text = "Инструкция";
             this.manualToolStripMenuItem.Click += new System.EventHandler(this.manualToolStripMenuItem_Click);
             // 
             // changeToolStripMenuItem
             // 
             this.changeToolStripMenuItem.Name = "changeToolStripMenuItem";
-            this.changeToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
+            this.changeToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.changeToolStripMenuItem.Text = "Исправления";
             this.changeToolStripMenuItem.Click += new System.EventHandler(this.changeToolStripMenuItem_Click);
             // 
@@ -351,26 +332,25 @@
             // 
             this.aboutProgramToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutProgramToolStripMenuItem.Image")));
             this.aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
-            this.aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
+            this.aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.aboutProgramToolStripMenuItem.Text = "О программе";
             this.aboutProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutProgramToolStripMenuItem_Click);
             // 
             // buttonDelete
             // 
             this.buttonDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonDelete.Image")));
-            this.buttonDelete.Location = new System.Drawing.Point(619, 613);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonDelete.Location = new System.Drawing.Point(464, 498);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(33, 31);
+            this.buttonDelete.Size = new System.Drawing.Size(25, 25);
             this.buttonDelete.TabIndex = 16;
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // FormHost
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1479, 752);
+            this.ClientSize = new System.Drawing.Size(1115, 604);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.listViewParameters);
             this.Controls.Add(this.panel1);
@@ -379,7 +359,6 @@
             this.Controls.Add(this.buttonPlay);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormHost";
             this.Text = "Крестики-нолики";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormHost_FormClosing);
