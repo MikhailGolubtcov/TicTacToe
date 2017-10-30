@@ -73,6 +73,12 @@
     <Compile Include="BattleParams.cs" />
     <Compile Include="DBInteraction.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GUI\FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\FormHost.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,7 +86,6 @@
       <DependentUpon>FormHost.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Square.cs" />
-    <Compile Include="GUI\Table.cs" />
     <Compile Include="IGUI.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerCellState.cs" />
@@ -131,6 +136,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GUI\FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\FormHost.resx">
       <DependentUpon>FormHost.cs</DependentUpon>
     </EmbeddedResource>

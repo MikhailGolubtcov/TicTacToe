@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EPAM.TicTacToe.GUI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,83 +10,81 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-
-
 namespace EPAM.TicTacToe
 {
     public partial class FormHost : Form, IGUI
     {
-        /////////////////////////////////// Host//////////////////////////////////////
-
         public string pathtoAlgorithm; //находится путь к алгоритму
-        public string selectPlayer; //кто с кем игареет (Alg vs alg или alg vs Hum), напр. "Algorithm vs human"
-        public string nameTeam; //находится имя команды
         public List<BattleParams> listParameters = new List<BattleParams>(); //для GUI: хранятся параметры (для таблицы)
                                                                //для Host: содержатся значения из таблицы
                                                                //один элемент листа содержит одну строку таблицы
                                                                //в каждом элементе листа содержится: Длинна поля (напр. если 50, то поле 50х50), количество выигрышных клеток (напр. 5), время сражения)
-
-
-        /// //////////////////////////////////////////////////////////////////////////
-
-        bool buttonPlayClicked;
-        int figure = 1; //хранится фигура, которой играет ползователь 1 - X, 2 - 0
         int countFields;
         int size, x, y;
         bool checkSelectedSquare;
+        int numberGame; //Считает количество игр (одна строка в таблице = 2 игры)
+        int numberListParameters; //Считает количество элементов listParameters
         int fieldValue; //хранит размер игорвого поля, например 4x4
-        //int[,] playField; //двумерный массив (матрица), в котором хранится игровое поле
         List<Square> listSquares = new List<Square>(); //хранится поле в виде квадратиков
         List<int[]> listCoordinates = new List<int[]>(); //хранятся координаты пустых ячеек
-
 
         public FormHost()
         {
             InitializeComponent();
             fieldValue = (int)numericUpDownNumberFields.Value;
             CreateSquares();
-            //CreatePlayField();
-        }
-
-        private void buttonX_MouseClick(object sender, MouseEventArgs e)
-        {
-            //buttonX.BackColor = Color.Gray;
-            //button0.BackColor = Color.LightGray;
-            //figure = 1; // X (крестик)
-        }
-        private void button0_Click(object sender, EventArgs e)
-        {
-            //button0.BackColor = Color.Gray;
-            //buttonX.BackColor = Color.LightGray;
-            //figure = 2; // 0 (нолик)
         }
 
         //↓↓↓ Внесение данных в таблицу при нажатии кнопки "Занести в таблицу" ↓↓↓
         private void buttonInsert_Click(object sender, EventArgs e)
         {
-            listParameters.Add(new BattleParams((byte)numericUpDownWinSquares.Value, (byte)numericUpDownNumberFields.Value, dateTimePicker.Value.TimeOfDay));
-            Insert();
+            if (dateTimePicker.Text == "0:00:00")
+            {
+                MessageBox.Show("Введите время");
+                return;
+            }
+            try
+            {
+                listParameters.Add(new BattleParams((byte)numericUpDownWinSquares.Value, (byte)numericUpDownNumberFields.Value, dateTimePicker.Value.TimeOfDay));
+                Insert();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonPlay_MouseHover(object sender, EventArgs e)
+        {
+            buttonPlay.BackColor = Color.Green;
+        }
+
+        private void buttonPlay_MouseLeave(object sender, EventArgs e)
+        {
+            buttonPlay.BackColor = Color.LightGreen;
         }
 
         private void buttonPlay_Click(object sender, EventArgs e)
         {
-            buttonPlayClicked = !buttonPlayClicked;
-            if (buttonPlayClicked == true)
+            if (listParameters.Count == 0)
             {
-                buttonPlay.BackColor = Color.Red;
-                buttonPlay.Text = "Стоп";
+                MessageBox.Show("Введите данные в таблицу");
+                return;
             }
-            else
+            try
             {
-                buttonPlay.BackColor = Color.LightGreen;
-                buttonPlay.Text = "Играть";
+                fieldValue = listParameters[0].MaxLengthFieldOfBattlefield;
+                CreateSquares();
+                numberGame = 0; //при нажатии "Играть" обнуляем количество игр
+                numberListParameters = 1; //Начинаем с первого элемента листа (первой строки таблицы)
+                Game game = new Game();
+                game.RunGame(textBoxPath.ToString(), listParameters, this);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
-            fieldValue = listParameters[0].MaxLengthFieldOfBattlefield;
-            CreateSquares();
-
-            Game game = new Game();
-            game.RunGame(textBoxPath.ToString(), listParameters, this);
         }
 
         //↓↓↓ Рисует квадратики ↓↓↓
@@ -171,18 +170,48 @@ namespace EPAM.TicTacToe
             }
         }
 
+        //↓↓↓ Открывает окно на месте его последнего закрытия ↓↓↓
+        private void FormHost_Load(object sender, EventArgs e)
+        {
+            Properties.Settings ps = Properties.Settings.Default;
+            this.Top = ps.Top;
+            this.Left = ps.Left;
+        }
+
+        //↓↓↓ Сохраняет расположение окна перед закрытием (чтобы открылось на прежнем месте) ↓↓↓
+        private void FormHost_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings ps = Properties.Settings.Default;
+            ps.Top = this.Top;
+            ps.Left = this.Left;
+            ps.Save();
+        }
 
         //↓↓↓ Заносит данные в таблицу ↓↓↓
+
+        private void numericUpDownNumberFields_ValueChanged(object sender, EventArgs e)
+        {
+            fieldValue = (int)numericUpDownNumberFields.Value;
+            labelField.Text = fieldValue.ToString() + " x " + fieldValue.ToString();
+            CreateSquares();
+        }
+
+        //↓↓↓ Удаляет последнюю строку из таблицы ↓↓↓
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            listParameters.Remove(listParameters.Last());
+            Insert();
+        }
+
         void Insert()
         {
             listViewParameters.Items.Clear();
             foreach (BattleParams bp in listParameters)
             {
-                ListViewItem lvi = new ListViewItem(new string[] { bp.QtyCellsForWin.ToString(), bp.MaxLengthFieldOfBattlefield.ToString(), bp.RemainingTimeForGame.ToString() });
+                ListViewItem lvi = new ListViewItem(new string[] { bp.MaxLengthFieldOfBattlefield.ToString(), bp.QtyCellsForWin.ToString(), bp.RemainingTimeForGame.ToString() });
                 listViewParameters.Items.Add(lvi);
             }
         }
-
 
         //↓↓↓ Создаёт квадратики, которые в последствии будут отрисованы ↓↓↓
         void CreateSquares()
@@ -238,42 +267,7 @@ namespace EPAM.TicTacToe
             }
             playGround.Invalidate();
             playGround.Invalidate();
-        }
-        private void numericUpDownNumberFields_ValueChanged(object sender, EventArgs e)
-        {
-            fieldValue = (int)numericUpDownNumberFields.Value;
-            labelField.Text = fieldValue.ToString() + " x " + fieldValue.ToString();
-            CreateSquares();
-            //CreatePlayField();
-        }
-
-        //↓↓↓ Удаляет последнюю строку из таблицы ↓↓↓
-        private void buttonDelete_Click(object sender, EventArgs e)
-        {
-            listParameters.Remove(listParameters.Last());
-            Insert();
-        }
-        private void radioButtonHumvsAlg_CheckedChanged(object sender, EventArgs e)
-        {
-            //if (radioButtonHumvsAlg.Checked)
-            //{
-            //    labelSelFigure.Visible = true;
-            //    buttonX.Visible = true;
-            //    button0.Visible = true;
-            //    buttonTeam.Visible = true;
-            //    labelTeam.Visible = true;
-            //    comboBoxTeam.Visible = true;
-            //}
-            //else
-            //{
-            //    labelSelFigure.Visible = false;
-            //    buttonX.Visible = false;
-            //    button0.Visible = false;
-            //    buttonTeam.Visible = false;
-            //    labelTeam.Visible = false;
-            //    comboBoxTeam.Visible = false;
-            //}
-        }
+        }        //↓↓↓ Реализация IGUI ↓↓↓ //
 
         public void RunForm()
         {
@@ -283,20 +277,6 @@ namespace EPAM.TicTacToe
         public void LoadTeamNamesList(List<string> teamNamesList)
         {
             throw new NotImplementedException();
-        }
-
-        bool ReturnIsVersusHuman()
-        {
-            bool temp = false;
-            if (radioButtonAlgvsAlg.Checked)
-            {
-                temp = false;
-            }
-            else if (radioButtonHumvsAlg.Checked)
-            {
-                temp = true;
-            }
-            return temp;
         }
 
         public string ReturnTeamName()
@@ -314,11 +294,23 @@ namespace EPAM.TicTacToe
             return listParameters;
         }
 
-        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+        private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormAbout aboutProgram = new FormAbout();
+            aboutProgram.Show();
         }
 
+        private void manualToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string path = @"..\..\Docs\Инструкция.docx";
+            System.Diagnostics.Process.Start(path);
+        }
+        private void changeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string path = @"..\..\Docs\Исправления.docx";
+            System.Diagnostics.Process.Start(path);
+        }
+        //↓↓↓ Принимает координату и значение (Х или 0) и отрисовывает её на игровом поле ↓↓↓ //
         public void VisualizeNextMove(CellCoordinates cellCoordinates, PlayerCellState.playerCellState cellState)
         {
             foreach (Square s in listSquares)
@@ -340,17 +332,32 @@ namespace EPAM.TicTacToe
             }
 
             playGround.Refresh();
+            Application.DoEvents();
+            playGround.AutoScrollOffset = new Point(50, 50);
+            
         }
-
-
+        
+        //↓↓↓ Очищает поле перед ново игрой ↓↓↓ //
         public void ClearBattleField()
         {
-            foreach (Square s in listSquares)
+            if(numberGame == 0 || numberGame == 1)
             {
-                if (s.Value != 0)
+                foreach (Square s in listSquares)
                 {
-                    s.Value = 0;
+                    if (s.Value != 0)
+                    {
+                        s.Value = 0;
+                    }
                 }
+                numberGame++;
+            }
+            else if(numberGame == 2 && numberListParameters < listParameters.Count)
+            {
+                fieldValue = listParameters[numberListParameters].MaxLengthFieldOfBattlefield;
+                CreateSquares();
+                playGround.Invalidate();
+                numberListParameters++;
+                numberGame = 1;
             }
         }
     }

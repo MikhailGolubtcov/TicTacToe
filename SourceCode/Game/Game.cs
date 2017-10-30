@@ -183,6 +183,7 @@ namespace EPAM.TicTacToe
                 if (playingPairOfPlayers[algorithmIndex].RemainingTimeForGame < TimeSpan.FromSeconds(0))
                 {
                     isVictory = true;
+                    playingPairOfPlayers[algorithmIndex].RemainingTimeForGame = TimeSpan.FromSeconds(0);
                     (playingPairOfPlayers[(SByte)((algorithmIndex - 1) * (-1))]).isWinner = true;
                     playingPairOfPlayers[algorithmIndex].battleResult = "Player has exceeded limit time for whole game";
                     playingPairOfPlayers[(SByte)((algorithmIndex - 1) * (-1))].battleResult = "Another player has exceeded limit time for whole game";
@@ -238,36 +239,39 @@ namespace EPAM.TicTacToe
             allPlayersList = players.ReturnAllPlayers(/*isVersusHuman, teamName*/false, "NoName", gui.ReturnPathToAlgorithms());
 
             int k = 1;
+            int i = 1;
             var queryPlayers = allPlayersList.SelectMany(PlayerId => allPlayersList, (PlayerId1, PlayerId2) => new { PlayerId1, PlayerId2 }).Where(PlayerId => PlayerId.PlayerId1 != PlayerId.PlayerId2);
+            int brCount = queryPlayers.Count();
             foreach (var player in queryPlayers)
             {
-                try
-                {
-                    ConstructorInfo constructor1 = player.PlayerId1.AlgorithmClass.GetConstructor(new Type[0]);
-                    dynamic initializedPlayer1 = constructor1.Invoke(new object[0]);
-                    player.PlayerId1.initializedPlayer = initializedPlayer1;
-                }
-                catch (Exception e)
-                {
-                    dbInteraction.PublishGameException("Team's \"" + player.PlayerId1.TeamName + "\" algorithm has thrown exceptions while creating class object via constructor.", e.ToString());
-                }
-
-                try
-                {
-                    ConstructorInfo constructor2 = player.PlayerId2.AlgorithmClass.GetConstructor(new Type[0]);
-                    dynamic initializedPlayer2 = constructor2.Invoke(new object[0]);
-                    player.PlayerId2.initializedPlayer = initializedPlayer2;
-                }
-                catch (Exception e)
-                {
-                    dbInteraction.PublishGameException("Team's \"" + player.PlayerId2.TeamName + "\" algorithm has thrown exceptions while creating class object via constructor.", e.ToString());
-                }
-
                 player.PlayerId1.playerCellState = PlayerCellState.playerCellState.X;
                 player.PlayerId2.playerCellState = PlayerCellState.playerCellState.O;
 
+                k = i;
                 foreach (BattleParams battleParams in listBattleParams)
                 {
+                    try
+                    {
+                        ConstructorInfo constructor1 = player.PlayerId1.AlgorithmClass.GetConstructor(new Type[0]);
+                        dynamic initializedPlayer1 = constructor1.Invoke(new object[0]);
+                        player.PlayerId1.initializedPlayer = initializedPlayer1;
+                    }
+                    catch (Exception e)
+                    {
+                        dbInteraction.PublishGameException("Team's \"" + player.PlayerId1.TeamName + "\" algorithm has thrown exceptions while creating class object via constructor.", e.ToString());
+                    }
+
+                    try
+                    {
+                        ConstructorInfo constructor2 = player.PlayerId2.AlgorithmClass.GetConstructor(new Type[0]);
+                        dynamic initializedPlayer2 = constructor2.Invoke(new object[0]);
+                        player.PlayerId2.initializedPlayer = initializedPlayer2;
+                    }
+                    catch (Exception e)
+                    {
+                        dbInteraction.PublishGameException("Team's \"" + player.PlayerId2.TeamName + "\" algorithm has thrown exceptions while creating class object via constructor.", e.ToString());
+                    }
+
                     player.PlayerId1.RemainingTimeForGame = battleParams.RemainingTimeForGame;
                     player.PlayerId1.QtyCellsForWin = battleParams.QtyCellsForWin;
                     player.PlayerId1.MaxLengthFieldOfBattlefield = battleParams.MaxLengthFieldOfBattlefield;
@@ -278,11 +282,12 @@ namespace EPAM.TicTacToe
                     player.PlayerId2.PlayingPairId = k;
                     playersTournamentList.Add((Player)player.PlayerId1.Clone());
                     playersTournamentList.Add((Player)player.PlayerId2.Clone());
-                    k += 1;
+                    k += brCount;
                 }
+                i += 1;
             }
 
-            for (int n = 1; n < k; n++)
+            for (int n = 1; n <= k - brCount; n++)
             {
                 List<Player> playingPairOfPlayers = new List<Player>();
                 playingPairOfPlayers.AddRange(playersTournamentList.Where(CurrentPlayingPairId => CurrentPlayingPairId.PlayingPairId == n));

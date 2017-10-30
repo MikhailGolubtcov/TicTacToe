@@ -11,7 +11,7 @@ namespace EPAM.TicTacToe
 {
     internal class DBInteraction
     {
-        private string sqlConnStr = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\TicTacToeDB.mdf;Integrated Security=True";
+        private string sqlConnStr = "Data Source=(localdb)\\mssqllocaldb;AttachDbFilename=|DataDirectory|\\TicTacToeDB.mdf;Integrated Security=True";
 
         internal void PublishGameResults(List<Player> playersTournamentList)
         {

@@ -30,6 +30,7 @@ namespace EPAM.TicTacToe
 
         public object Clone()
         {
+            //this.initializedPlayer = new IPlayer();
             return this.MemberwiseClone();
         }
 
