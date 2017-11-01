@@ -78,7 +78,9 @@ namespace EPAM.TicTacToe
                 numberGame = 0; //при нажатии "Играть" обнуляем количество игр
                 numberListParameters = 1; //Начинаем с первого элемента листа (первой строки таблицы)
                 Game game = new Game();
-                game.RunGame(textBoxPath.ToString(), listParameters, this);
+
+                Task task = Task.Run(() => game.RunGame(textBoxPath.ToString(), listParameters, this));
+                //game.RunGame(textBoxPath.ToString(), listParameters, this);
             }
             catch(Exception ex)
             {

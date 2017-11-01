@@ -15,4 +15,6 @@ C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\Assemblies\Game\EPAM.TicTacToe.IP
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\IPlayer\obj\Debug\IPlayer.csproj.CoreCompileInputs.cache
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\IPlayer\obj\Debug\EPAM.TicTacToe.IPlayer.dll
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\IPlayer\obj\Debug\EPAM.TicTacToe.IPlayer.pdb
+C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\Assemblies\Game\EPAM.TicTacToe.IPlayer.dll.CodeAnalysisLog.xml
+C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\Assemblies\Game\EPAM.TicTacToe.IPlayer.dll.lastcodeanalysissucceeded
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\IPlayer\obj\Debug\IPlayer.csprojResolveAssemblyReference.cache

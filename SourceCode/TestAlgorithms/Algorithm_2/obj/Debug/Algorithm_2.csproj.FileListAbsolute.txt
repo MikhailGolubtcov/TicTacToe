@@ -19,3 +19,5 @@ C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\TestAlgorithms\Algorit
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\TestAlgorithms\Algorithm_2\obj\Debug\Algorithm_2.csproj.CoreCompileInputs.cache
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\TestAlgorithms\Algorithm_2\obj\Debug\EPAM.TicTacToe.Algorithm_2.dll
 C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\SourceCode\TestAlgorithms\Algorithm_2\obj\Debug\EPAM.TicTacToe.Algorithm_2.pdb
+C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\Assemblies\TestAlgorithms\EPAM.TicTacToe.Algorithm_2.dll.CodeAnalysisLog.xml
+C:\Users\Mikhail_Golubtcov\Documents\TicTacToe\Assemblies\TestAlgorithms\EPAM.TicTacToe.Algorithm_2.dll.lastcodeanalysissucceeded

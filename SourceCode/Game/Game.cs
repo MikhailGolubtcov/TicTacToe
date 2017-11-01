@@ -8,6 +8,7 @@ using System.Threading;
 using System.Data;
 using System.Windows;
 using System.Reflection;
+using System.Diagnostics;
 
 
 
@@ -154,6 +155,7 @@ namespace EPAM.TicTacToe
             CellCoordinates nextMove = new CellCoordinates();
             int maxCellCoordinate = (maxLengthFieldOfBattlefield - 1) * 1000 + (maxLengthFieldOfBattlefield - 1);
             battleField = CreateBattleField(maxLengthFieldOfBattlefield);
+
 
             do
             {
